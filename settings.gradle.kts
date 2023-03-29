@@ -1,5 +1,4 @@
 @file:Suppress("UnstableApiUsage")
-
 pluginManagement {
     repositories {
         maven(url = "https://maven.aliyun.com/repository/google")

@@ -43,9 +43,6 @@ dependencies {
     api(libs.toaster)
     api(libs.multitype)
     api(libs.xxpermission)
-    api(libs.firebase.bom)
-    api(libs.firebase.analytics)
-    api(libs.firebase.crashlytics)
 
-
+    api(project(":model"))
 }

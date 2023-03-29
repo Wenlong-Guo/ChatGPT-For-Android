@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 android {
     namespace = "io.github.guowenlong.chatgptforandroid"
@@ -23,6 +25,10 @@ android {
 }
 
 dependencies {
-    api(project(":feature:chat"))
-    api(project(":feature:login"))
+    implementation(project(":feature:chat"))
+    implementation(project(":feature:login"))
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
 }

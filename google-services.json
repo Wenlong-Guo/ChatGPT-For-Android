@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "898353388542",
+    "project_id": "chatgpt-for-android-wenlong",
+    "storage_bucket": "chatgpt-for-android-wenlong.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898353388542:android:968733ced70e0f2f5d3eaf",
+        "android_client_info": {
+          "package_name": "io.github.guowenlong.chatgptforandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898353388542-bnehd04560kbprigffc87d80u3eppkcj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.guowenlong.chatgptforandroid",
+            "certificate_hash": "c8cd89a22c6b91f19d5ac954b19537cee05cd99f"
+          }
+        },
+        {
+          "client_id": "898353388542-piabo8f1e2m1641jjr0nrp5p4j4f6jd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcQrpw5Ti7-Ou1jmaFiCHQOPsAOzLfviM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898353388542-piabo8f1e2m1641jjr0nrp5p4j4f6jd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

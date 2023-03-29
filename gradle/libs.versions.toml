@@ -1,8 +1,97 @@
 [versions]
 kotlin = "1.7.20"
 androidGradlePlugin = "7.3.1"
-[libraries]
 
+
+androidxActivityKtx = "1.7.0"
+
+androidxAppCompat = "1.5.1"
+
+androidxCardview = "1.0.0"
+
+androidxConstraintlayout = "2.1.4"
+
+androidxCore = "1.9.0"
+
+androidxFragmentKtx = "1.5.6"
+
+androidxLifecycleViewModelKtx = "2.6.1"
+
+androidxRecyclerview = "1.3.0"
+
+androidxRoom = "2.5.0"
+
+glide = "4.15.1"
+
+googleMaterial = "1.6.1"
+
+koinAndroid = "3.4.0"
+
+kotlinxCoroutines = "1.6.4"
+
+moshi = "1.14.0"
+
+multitype = "4.3.0"
+
+okhttpLog = "3.1.0"
+
+retrofit = "2.9.0"
+
+toaster = "12.0"
+
+xxpermission = "16.8"
+
+firebaseBom = "31.2.3"
+
+leakcanary = "2.10"
+
+[libraries]
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivityKtx" }
+
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "androidxCardview" }
+
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragmentKtx" }
+
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewModelKtx" }
+
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerview" }
+
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
+androidx-room-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+glide-okhttp3 = { group = "com.github.bumptech.glide", name = "okhttp3-integration", version.ref = "glide" }
+
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
+
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+okhttp-log = { group = "com.github.ihsanbal", name = "LoggingInterceptor", version.ref = "okhttpLog" }
+
+retrofit = { group = 'com.squareup.retrofit2', name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "moshi" }
+
+toaster = { group = "com.github.getActivity", name = "Toaster", version = "toaster" }
+
+multitype = { group = "com.drakeet.multitype", name = "multitype", version.ref = "multitype" }
+
+xxpermission = { group = "com.github.getActivity", name = "XXPermissions", version.ref = "xxpermission" }
+
+firebase_bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase_crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
+firebase_analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
+
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -10,5 +99,3 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
-firebase-crashlytics = "com.google.firebase.crashlytics:2.9.2"

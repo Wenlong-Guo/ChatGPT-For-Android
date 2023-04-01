@@ -1,6 +1,10 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+
 }
 android {
     namespace = "io.github.guowenlong.chatgptforandroid.common"
@@ -9,12 +13,22 @@ android {
 
     defaultConfig {
         minSdk = Configurations.minSdk
-        targetSdk = Configurations.targetSdk
+        buildConfigField(
+            "String",
+            "apiKye",
+            "\"" + gradleLocalProperties(rootDir).getProperty("apikey", "") + "\""
+        )
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    dataBinding {
+        enable = true
     }
 }
 
@@ -26,12 +40,13 @@ dependencies {
     api(libs.androidx.core.ktx)
     api(libs.androidx.fragment.ktx)
     api(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.preference)
     api(libs.androidx.recyclerview)
     api(libs.androidx.room.room.ktx)
-    api(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
     api(libs.androidx.room.runtime)
     api(libs.glide)
-    api(libs.glide.compiler)
+    kapt(libs.glide.compiler)
     api(libs.glide.okhttp3)
     api(libs.google.material)
     api(libs.koin.android)
@@ -40,7 +55,7 @@ dependencies {
     api(libs.okhttp.log)
     api(libs.retrofit)
     api(libs.retrofit.converter.moshi)
-    api(libs.toaster)
+//    api(libs.toaster)
     api(libs.multitype)
     api(libs.xxpermission)
 

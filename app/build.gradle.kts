@@ -22,12 +22,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    dataBinding {
+        enable = true
+    }
 }
 
 dependencies {
     implementation(project(":feature:chat"))
     implementation(project(":feature:login"))
-
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)

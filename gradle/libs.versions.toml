@@ -17,6 +17,8 @@ androidxFragmentKtx = "1.5.6"
 
 androidxLifecycleViewModelKtx = "2.6.1"
 
+androidxPreference = "1.2.0"
+
 androidxRecyclerview = "1.3.0"
 
 androidxRoom = "2.5.0"
@@ -60,6 +62,8 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewModelKtx" }
 
+androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "androidxPreference" }
+
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerview" }
 
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
@@ -79,7 +83,7 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 okhttp-log = { group = "com.github.ihsanbal", name = "LoggingInterceptor", version.ref = "okhttpLog" }
 
 retrofit = { group = 'com.squareup.retrofit2', name = "retrofit", version.ref = "retrofit" }
-retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "moshi" }
+retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 
 toaster = { group = "com.github.getActivity", name = "Toaster", version = "toaster" }
 
@@ -102,4 +106,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 gms-googleServices = "com.google.gms.google-services:4.3.15"
 firebase-crashlytics = "com.google.firebase.crashlytics:2.9.4"
-firebase-analytics = "com.google.firebase.analytics:18.0.2"

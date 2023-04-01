@@ -3,13 +3,12 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 android {
-    namespace = "io.github.guowenlong.chatgptforandroid.repository"
+    namespace = "io.github.guowenlong.chatgptforandroid.model"
 
     compileSdk = Configurations.compileSdk
 
     defaultConfig {
         minSdk = Configurations.minSdk
-        targetSdk = Configurations.targetSdk
     }
 
     compileOptions {
@@ -19,5 +18,4 @@ android {
 }
 
 dependencies {
-
 }

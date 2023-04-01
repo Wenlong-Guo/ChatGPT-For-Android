@@ -1,5 +1,8 @@
 package io.github.guowenlong.chatgptforandroid.di
 
+import io.github.guowenlong.chatgptforandroid.MainViewModel
+import io.github.guowenlong.chatgptforandroid.common.di.baseModule
+import io.github.guowenlong.chatgptforandroid.repository.di.repositoryModule
 import org.koin.dsl.module
 
 /**
@@ -9,9 +12,11 @@ import org.koin.dsl.module
  * Email:       guowenlong20000@sina.com
  */
 val mainModule = module {
-
+    single { MainViewModel(get()) }
 }
 
 val appModules = listOf(
+    baseModule,
     mainModule,
+    repositoryModule,
 )

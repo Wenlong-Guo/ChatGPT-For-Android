@@ -7,11 +7,11 @@ import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgptforandroid.adapter.ChatGPTViewBinder
 import io.github.guowenlong.chatgptforandroid.adapter.ChatUserViewBinder
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
-import io.github.guowenlong.chatgptforandroid.databinding.ActivityMainBinding
+import io.github.guowenlong.chatgptforandroid.databinding.ActivityChatBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity(override val layoutId: Int = R.layout.activity_main) :
-    BaseActivity<ActivityMainBinding>() {
+class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
+    BaseActivity<ActivityChatBinding>() {
 
     private val viewModel by viewModel<MainViewModel>()
 
@@ -48,7 +48,7 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
 
     override fun bind() {
         binding.button.setOnClickListener {
-            viewModel.completions()
+            viewModel.edits()
         }
         binding.btnSend.setOnClickListener {
             viewModel.completionStream(

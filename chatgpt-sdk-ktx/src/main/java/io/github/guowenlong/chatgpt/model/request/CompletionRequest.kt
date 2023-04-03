@@ -11,26 +11,30 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class CompletionRequest(
+    @field:Json(name = "model")
+    val model: String = "gpt-3.5-turbo",
     @field:Json(name = "messages")
     val messages: List<Message>,
-    @field:Json(name = "logprobs")
-    val logprobs: Int? = null,
-    @field:Json(name = "max_tokens")
-    val max_tokens: Int = 3500,
-    @field:Json(name = "model")
-    val model: String = "gpt-3.5-turbo-0301",
+    @field:Json(name = "temperature")
+    val temperature: Double? = null,
+    @field:Json(name = "top_p")
+    val top_p: Double? = null,
     @field:Json(name = "n")
-    val n: Int = 1,
-    @field:Json(name = "prompt")
-    val prompt: String? = null,
+    val n: Int? = null,
+    @field:Json(name = "stream")
+    var stream: Boolean? = false,
     @field:Json(name = "stop")
     val stop: String? = null,
-    @field:Json(name = "stream")
-    var stream: Boolean = true,
-    @field:Json(name = "temperature")
-    val temperature: Int = 1,
-    @field:Json(name = "top_p")
-    val top_p: Int = 1
+    @field:Json(name = "max_tokens")
+    val max_tokens: Int? = null,
+    @field:Json(name = "presence_penalty")
+    val presence_penalty: Double? = null,
+    @field:Json(name = "frequency_penalty")
+    val frequency_penalty: Double? = null,
+    @field:Json(name = "logit_bias")
+    val logprlogit_biasobs: Any? = null,
+    @field:Json(name = "user")
+    val user: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Message(

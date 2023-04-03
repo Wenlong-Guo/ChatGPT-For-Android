@@ -6,8 +6,10 @@ import com.squareup.moshi.Moshi
 import io.github.guowenlong.chatgpt.api.OpenAIApi
 import io.github.guowenlong.chatgpt.interceptor.TokenInterceptor
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
+import io.github.guowenlong.chatgpt.model.request.EditRequest
 import io.github.guowenlong.chatgpt.model.response.Completion
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
+import io.github.guowenlong.chatgpt.model.response.Edits
 import io.github.guowenlong.chatgpt.model.response.Model
 import io.github.guowenlong.chatgpt.utils.RandomUtil
 import okhttp3.OkHttpClient
@@ -72,6 +74,10 @@ class ChatGPT private constructor() {
         return api.completions(completionRequest)
     }
 
+    suspend fun edits(editRequest: EditRequest): Edits {
+        return api.edits(editRequest)
+    }
+
     fun completionsByStream(
         completionRequest: CompletionRequest,
         listener: StreamListener
@@ -97,7 +103,10 @@ class ChatGPT private constructor() {
                 .toJson(completionRequest)
 
             connection.requestMethod = "POST"
-            connection.setRequestProperty("Authorization", "Bearer ${apiKeys[RandomUtil.randomInt(0, apiKeys.size - 1)]}")
+            connection.setRequestProperty(
+                "Authorization",
+                "Bearer ${apiKeys[RandomUtil.randomInt(0, apiKeys.size - 1)]}"
+            )
             connection.setRequestProperty("Content-Type", "application/json")
             connection.setRequestProperty("Accept", "text/event-stream")
 
@@ -147,11 +156,19 @@ class ChatGPT private constructor() {
         isLogEnable: Boolean,
         apiKeys: List<String>
     ): OkHttpClient {
+        val proxy = if (proxyType != null && proxyUrl?.isNotBlank() == true && proxyPort != null) {
+            Proxy(Proxy.Type.SOCKS, InetSocketAddress(proxyUrl, proxyPort!!))
+        } else {
+            null
+        }
         return OkHttpClient.Builder()
             .readTimeout(readTimeout.toLong(), TimeUnit.SECONDS)
             .writeTimeout(writeTimeout.toLong(), TimeUnit.SECONDS)
             .connectTimeout(connectTimeout.toLong(), TimeUnit.SECONDS)
             .addInterceptor(TokenInterceptor(apiKeys))
+            .also {
+                if (proxy != null) it.proxy(proxy)
+            }
             .also {
                 if (isLogEnable) {
                     val loggingInterceptor = LoggingInterceptor.Builder()

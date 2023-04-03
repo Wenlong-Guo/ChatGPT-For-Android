@@ -3,6 +3,7 @@ package io.github.guowenlong.chatgptforandroid.repository
 import io.github.guowenlong.chatgpt.ChatGPT
 import io.github.guowenlong.chatgpt.StreamListener
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
+import io.github.guowenlong.chatgpt.model.request.EditRequest
 import io.github.guowenlong.chatgptforandroid.common.base.BaseRepository
 
 
@@ -26,4 +27,7 @@ class OpenAIRepository(private val chatGPT: ChatGPT) : BaseRepository() {
         chatGPT.completionsByStream(completionRequest,listener)
     }
 
+    suspend fun getEdits(editRequest: EditRequest) = request {
+        chatGPT.edits(editRequest)
+    }
 }

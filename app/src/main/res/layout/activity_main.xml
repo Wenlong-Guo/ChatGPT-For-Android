@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:background="@android:color/darker_gray"
+            android:background="#4D4D4D"
             app:layout_constraintBottom_toTopOf="@id/et_content"
             app:layout_constraintTop_toBottomOf="@id/button" />
 

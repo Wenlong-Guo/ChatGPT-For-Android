@@ -36,14 +36,6 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
             adapter.notifyItemChanged(it)
             binding.rvContent.postDelayed({
                 layoutManager.scrollToPositionWithOffset(adapter.items.size - 1, Int.MIN_VALUE)
-//                binding.rvContent.smoothScrollToPosition(adapter.items.size - 1)
-//                binding.rvContent.postDelayed({
-//                    val lastVisibleItem = (binding.rvContent.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
-//                    val offset = binding.rvContent.height - (binding.rvContent.getChildAt(binding.rvContent.childCount - 1)?.bottom ?: 0)
-//                    if (lastVisibleItem != binding.rvContent.adapter?.itemCount?.minus(1) && offset >= 0) {
-//                        binding.rvContent.smoothScrollBy(0, offset)
-//                    }
-//                },150)
             }, 200)
         }
         layoutManager.stackFromEnd = true

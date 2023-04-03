@@ -87,39 +87,4 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
             }
         )
     }
-
-    fun testCompletion() = launch {
-        var content = ""
-        repository.getCompletionsByString(
-            CompletionRequest(
-                messages = listOf(
-                    CompletionRequest.Message(
-                        content = "埃隆马斯克的生平简介发给我"
-                    )
-                )
-            ), object : StreamListener {
-                override fun onStart() {
-                    logE("onStart")
-                }
-
-                override fun onStreamPre(completionStream: CompletionStream) {
-                    content += completionStream.choices[0].delta.content
-                    logE("onStreamPre:$content")
-                }
-
-                override fun onStream(completionStream: CompletionStream) {
-                    content += completionStream.choices[0].delta.content
-                    logE("onStream:$content")
-                }
-
-                override fun onCompleted() {
-                    logE("onCompleted")
-                }
-
-                override fun onError(exception: Exception) {
-                    logE("onError:",exception)
-                }
-            }
-        )
-    }
 }

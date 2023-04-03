@@ -1,8 +1,10 @@
 package io.github.guowenlong.chatgptforandroid.repository
 
+import io.github.guowenlong.chatgpt.ChatGPT
+import io.github.guowenlong.chatgpt.StreamListener
+import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgptforandroid.common.base.BaseRepository
-import io.github.guowenlong.chatgptforandroid.model.CompletionRequest
-import io.github.guowenlong.chatgptforandroid.repository.net.OpenAIApi
+
 
 /**
  * Description: OpenAI的仓库
@@ -10,11 +12,18 @@ import io.github.guowenlong.chatgptforandroid.repository.net.OpenAIApi
  * Date:        2023/3/31 1:26
  * Email:       guowenlong20000@sina.com
  */
-class OpenAIRepository(private val api: OpenAIApi) : BaseRepository() {
+class OpenAIRepository(private val chatGPT: ChatGPT) : BaseRepository() {
 
-    suspend fun getModels() = request { api.getModels() }
+    suspend fun getModels() = request {
+        chatGPT.getModels()
+    }
 
-    suspend fun completions(content: String) =
-        request { api.completions(CompletionRequest(messages = listOf(CompletionRequest.Message(content = content)))) }
+    suspend fun getCompletions(completionRequest: CompletionRequest) = request {
+        chatGPT.completions(completionRequest)
+    }
+
+    suspend fun getCompletionsByString(completionRequest: CompletionRequest,listener: StreamListener) = request {
+        chatGPT.completionsByStream(completionRequest,listener)
+    }
 
 }

@@ -1,8 +1,8 @@
-package io.github.guowenlong.chatgptforandroid.repository.net
+package io.github.guowenlong.chatgpt.api
 
-import io.github.guowenlong.chatgptforandroid.model.Completion
-import io.github.guowenlong.chatgptforandroid.model.CompletionRequest
-import io.github.guowenlong.chatgptforandroid.model.Model
+import io.github.guowenlong.chatgpt.model.request.CompletionRequest
+import io.github.guowenlong.chatgpt.model.response.Completion
+import io.github.guowenlong.chatgpt.model.response.Model
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

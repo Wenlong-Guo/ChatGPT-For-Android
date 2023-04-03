@@ -1,4 +1,5 @@
 @file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         maven(url = "https://maven.aliyun.com/repository/google")
@@ -33,3 +34,4 @@ include(":feature:chat")
 include(":common")
 include(":model")
 include(":repository")
+include(":chatgpt-sdk-ktx")

@@ -22,4 +22,5 @@ android {
 
 dependencies {
     api(project(":common"))
+    api(project(":chatgpt-sdk-ktx"))
 }

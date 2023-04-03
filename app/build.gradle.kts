@@ -33,6 +33,7 @@ android {
 dependencies {
     implementation(project(":feature:chat"))
     implementation(project(":feature:login"))
+    implementation(project(":chatgpt-sdk-ktx"))
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)

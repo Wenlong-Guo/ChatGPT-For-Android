@@ -40,6 +40,7 @@ dependencies {
     api(libs.androidx.core.ktx)
     api(libs.androidx.fragment.ktx)
     api(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.lifecycle.livedata.ktx)
     api(libs.androidx.preference)
     api(libs.androidx.recyclerview)
     api(libs.androidx.room.room.ktx)
@@ -52,12 +53,10 @@ dependencies {
     api(libs.koin.android)
     api(libs.kotlinx.coroutines.android)
     api(libs.okhttp.log)
-    api(libs.okhttp.log)
     api(libs.retrofit)
     api(libs.retrofit.converter.moshi)
-//    api(libs.toaster)
+    api(libs.toaster)
     api(libs.multitype)
     api(libs.xxpermission)
-
     api(project(":model"))
 }

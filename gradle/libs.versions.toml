@@ -31,13 +31,13 @@ koinAndroid = "3.4.0"
 
 kotlinxCoroutines = "1.6.4"
 
-moshi = "1.14.0"
-
 multitype = "4.3.0"
 
 okhttpLog = "3.1.0"
 
 retrofit = "2.9.0"
+
+moshi = "1.14.0"
 
 toaster = "12.0"
 
@@ -61,6 +61,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragmentKtx" }
 
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewModelKtx" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version = "2.4.0" }
 
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "androidxPreference" }
 
@@ -81,11 +82,15 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
 okhttp-log = { group = "com.github.ihsanbal", name = "LoggingInterceptor", version.ref = "okhttpLog" }
+okhttp-see = {group = "com.squareup.okhttp3", name = "okhttp-sse", version = "4.10.0" }
 
 retrofit = { group = 'com.squareup.retrofit2', name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 
-toaster = { group = "com.github.getActivity", name = "Toaster", version = "toaster" }
+moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+
+toaster = { group = "com.github.getActivity", name = "Toaster", version.ref = "toaster" }
 
 multitype = { group = "com.drakeet.multitype", name = "multitype", version.ref = "multitype" }
 

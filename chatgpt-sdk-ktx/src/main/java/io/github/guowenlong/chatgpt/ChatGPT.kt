@@ -1,5 +1,7 @@
 package io.github.guowenlong.chatgpt
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.squareup.moshi.Moshi
@@ -47,6 +49,13 @@ class ChatGPT private constructor() {
     private var connectTimeout: Int = 60_000
 
     constructor(builder: Builder) : this() {
+        proxyType = builder.proxyType
+        proxyPort = builder.proxyPort
+        proxyUrl = builder.proxyUrl
+        baseUrl = builder.baseUrl
+        readTimeout = builder.readTimeout
+        connectTimeout = builder.connectTimeout
+        apiKeys = builder.apiKeys
         client = initOkHttp(
             builder.readTimeout,
             builder.writeTimeout,
@@ -56,13 +65,6 @@ class ChatGPT private constructor() {
         )
         retrofit = initRetrofit(builder.baseUrl)
         api = initApi()
-        proxyType = builder.proxyType
-        proxyPort = builder.proxyPort
-        proxyUrl = builder.proxyUrl
-        baseUrl = builder.baseUrl
-        readTimeout = builder.readTimeout
-        connectTimeout = builder.connectTimeout
-        apiKeys = builder.apiKeys
     }
 
     suspend fun getModels(): Model {
@@ -157,8 +159,10 @@ class ChatGPT private constructor() {
         apiKeys: List<String>
     ): OkHttpClient {
         val proxy = if (proxyType != null && proxyUrl?.isNotBlank() == true && proxyPort != null) {
+            Log.e(TAG, "initOkHttp: you" )
             Proxy(Proxy.Type.SOCKS, InetSocketAddress(proxyUrl, proxyPort!!))
         } else {
+            Log.e(TAG, "initOkHttp: WU" )
             null
         }
         return OkHttpClient.Builder()

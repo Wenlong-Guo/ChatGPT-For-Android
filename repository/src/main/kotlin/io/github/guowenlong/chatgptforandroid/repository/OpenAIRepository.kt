@@ -4,6 +4,7 @@ import io.github.guowenlong.chatgpt.ChatGPT
 import io.github.guowenlong.chatgpt.StreamListener
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgptforandroid.common.base.BaseRepository
 
 
@@ -29,5 +30,9 @@ class OpenAIRepository(private val chatGPT: ChatGPT) : BaseRepository() {
 
     suspend fun getEdits(editRequest: EditRequest) = request {
         chatGPT.edits(editRequest)
+    }
+
+    suspend fun generationImage(imageGenerationRequest: ImageGenerationRequest) = request {
+        chatGPT.generationImage(imageGenerationRequest)
     }
 }

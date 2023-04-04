@@ -9,10 +9,8 @@ import io.github.guowenlong.chatgpt.api.OpenAIApi
 import io.github.guowenlong.chatgpt.interceptor.TokenInterceptor
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
-import io.github.guowenlong.chatgpt.model.response.Completion
-import io.github.guowenlong.chatgpt.model.response.CompletionStream
-import io.github.guowenlong.chatgpt.model.response.Edits
-import io.github.guowenlong.chatgpt.model.response.Model
+import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
+import io.github.guowenlong.chatgpt.model.response.*
 import io.github.guowenlong.chatgpt.utils.RandomUtil
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
@@ -78,6 +76,10 @@ class ChatGPT private constructor() {
 
     suspend fun edits(editRequest: EditRequest): Edits {
         return api.edits(editRequest)
+    }
+
+    suspend fun generationImage(imageGenerationRequest: ImageGenerationRequest): ImageGeneration {
+        return api.generationImage(imageGenerationRequest)
     }
 
     fun completionsByStream(

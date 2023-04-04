@@ -2,8 +2,10 @@ package io.github.guowenlong.chatgpt.api
 
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.Completion
 import io.github.guowenlong.chatgpt.model.response.Edits
+import io.github.guowenlong.chatgpt.model.response.ImageGeneration
 import io.github.guowenlong.chatgpt.model.response.Model
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,5 +30,12 @@ interface OpenAIApi {
     @POST("/v1/edits")
     suspend fun edits(@Body body: EditRequest): Edits
 
+    @POST("/v1/images/generations")
+    suspend fun generationImage(@Body body: ImageGenerationRequest): ImageGeneration
 
+    @POST("/v1/images/edits")
+    suspend fun editGenerations(@Body body: CompletionRequest): Completion
+
+    @POST("/v1/images/variations")
+    suspend fun variationImage(@Body body: CompletionRequest): Completion
 }

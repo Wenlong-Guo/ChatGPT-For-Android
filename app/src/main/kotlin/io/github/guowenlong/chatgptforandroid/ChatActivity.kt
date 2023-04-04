@@ -48,7 +48,7 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
 
     override fun bind() {
         binding.button.setOnClickListener {
-            viewModel.edits()
+            viewModel.generationImage()
         }
         binding.btnSend.setOnClickListener {
             viewModel.completionStream(

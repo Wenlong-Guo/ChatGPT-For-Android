@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import io.github.guowenlong.chatgpt.StreamListener
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
 import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
 import io.github.guowenlong.chatgptforandroid.common.ext.logE
@@ -83,7 +84,7 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
                 }
 
                 override fun onError(exception: Exception) {
-                    logE("onError:",exception)
+                    logE("onError:", exception)
                 }
             }
         )
@@ -98,5 +99,14 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
             )
         )
         logE("edits: $edits")
+    }
+
+    fun generationImage() = launch {
+        val generationImage = repository.generationImage(ImageGenerationRequest(
+            prompt = "A cute West Highland",
+            n = 2,
+            size = "1024x1024"
+        ))
+        logE("generationImage: $generationImage")
     }
 }

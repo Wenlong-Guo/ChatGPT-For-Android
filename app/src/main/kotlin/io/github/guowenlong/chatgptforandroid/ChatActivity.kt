@@ -1,5 +1,6 @@
 package io.github.guowenlong.chatgptforandroid
 
+import android.content.Context
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
@@ -9,6 +10,8 @@ import io.github.guowenlong.chatgptforandroid.adapter.ChatUserViewBinder
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
 import io.github.guowenlong.chatgptforandroid.databinding.ActivityChatBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
+import java.io.FileOutputStream
 
 class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
     BaseActivity<ActivityChatBinding>() {
@@ -48,7 +51,9 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
 
     override fun bind() {
         binding.button.setOnClickListener {
-            viewModel.generationImage()
+            copyAssetFileToCache(this@ChatActivity, "ic_edit_image.png")
+            viewModel.editImage(File(cacheDir.absolutePath, "ic_edit_image.png"))
+            return@setOnClickListener
         }
         binding.btnSend.setOnClickListener {
             viewModel.completionStream(
@@ -62,5 +67,21 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
             )
             binding.etContent.setText("")
         }
+    }
+
+    private fun copyAssetFileToCache(context: Context, fileName: String) {
+        val assetManager = context.assets
+        val inputStream = assetManager.open(fileName)
+        val cacheDir = context.cacheDir
+        val outputFile = File(cacheDir, fileName)
+        val outputStream = FileOutputStream(outputFile)
+        val buffer = ByteArray(1024)
+        var length = inputStream.read(buffer)
+        while (length > 0) {
+            outputStream.write(buffer, 0, length)
+            length = inputStream.read(buffer)
+        }
+        inputStream.close()
+        outputStream.close()
     }
 }

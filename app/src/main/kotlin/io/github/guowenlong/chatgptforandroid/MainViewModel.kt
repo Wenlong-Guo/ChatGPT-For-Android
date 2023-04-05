@@ -12,6 +12,7 @@ import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
 import io.github.guowenlong.chatgptforandroid.common.ext.logE
 import io.github.guowenlong.chatgptforandroid.repository.OpenAIRepository
 import kotlinx.coroutines.launch
+import java.io.File
 
 /**
  * Description: [ChatActivity]的ViewModel
@@ -108,5 +109,14 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
             size = "1024x1024"
         ))
         logE("generationImage: $generationImage")
+    }
+
+    fun editImage(image: File) = launch {
+        val imageGeneration = repository.editImage(
+            image = image,
+            prompt = "Grayscale",
+            size = "256x256"
+        )
+        logE("editImage: $imageGeneration")
     }
 }

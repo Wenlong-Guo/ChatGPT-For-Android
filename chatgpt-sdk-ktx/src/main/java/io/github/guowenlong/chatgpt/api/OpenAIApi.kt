@@ -7,9 +7,8 @@ import io.github.guowenlong.chatgpt.model.response.Completion
 import io.github.guowenlong.chatgpt.model.response.Edits
 import io.github.guowenlong.chatgpt.model.response.ImageGeneration
 import io.github.guowenlong.chatgpt.model.response.Model
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 /**
  * Description: 请求
@@ -33,9 +32,25 @@ interface OpenAIApi {
     @POST("/v1/images/generations")
     suspend fun generationImage(@Body body: ImageGenerationRequest): ImageGeneration
 
+    @Multipart
     @POST("/v1/images/edits")
-    suspend fun editGenerations(@Body body: CompletionRequest): Completion
+    suspend fun editImage(
+        @Part image: MultipartBody.Part,
+        @Part prompt: MultipartBody.Part,
+        @Part mask: MultipartBody.Part? = null,
+        @Part n: MultipartBody.Part? = null,
+        @Part size: MultipartBody.Part? = null,
+        @Part response_format: MultipartBody.Part? = null,
+        @Part user: MultipartBody.Part? = null
+    ): ImageGeneration
 
+    @Multipart
     @POST("/v1/images/variations")
-    suspend fun variationImage(@Body body: CompletionRequest): Completion
+    suspend fun variationImage(
+        @Part image: MultipartBody.Part,
+        @Part n: Int? = null,
+        @Part size: String? = null,
+        @Part response_format: String? = null,
+        @Part user: String? = null
+    ): ImageGeneration
 }

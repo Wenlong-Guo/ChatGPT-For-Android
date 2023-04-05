@@ -1,7 +1,5 @@
 package io.github.guowenlong.chatgpt
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import com.squareup.moshi.Moshi
@@ -12,14 +10,15 @@ import io.github.guowenlong.chatgpt.model.request.EditRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.*
 import io.github.guowenlong.chatgpt.utils.RandomUtil
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.internal.platform.Platform
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.BufferedInputStream
-import java.io.BufferedOutputStream
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import retrofit2.http.Part
+import java.io.*
 import java.net.InetSocketAddress
 import java.net.Proxy
 import java.net.URL
@@ -80,6 +79,59 @@ class ChatGPT private constructor() {
 
     suspend fun generationImage(imageGenerationRequest: ImageGenerationRequest): ImageGeneration {
         return api.generationImage(imageGenerationRequest)
+    }
+
+    /**
+     * 不太好用
+     */
+    suspend fun editImage(
+        image: File,
+        prompt: String,
+        mask: File? = null,
+        n: Int? = null,
+        size: String? = null,
+        response_format: String? = null,
+        user: String? = null
+    ): ImageGeneration {
+        val requestBody = image.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val imagePart = MultipartBody.Part.createFormData("image", image.name, requestBody)
+        val maskPart = if (mask != null) {
+            MultipartBody.Part.createFormData("mask", mask.name, requestBody)
+        } else {
+            null
+        }
+        val promptPart = MultipartBody.Part.createFormData("prompt", prompt)
+        val nPart = if (n != null) {
+            MultipartBody.Part.createFormData("n", n.toString())
+        } else {
+            null
+        }
+        val sizePart = if (size != null) {
+            MultipartBody.Part.createFormData("size", size)
+        } else {
+            null
+        }
+        val responseFormatPart = if (response_format != null) {
+            MultipartBody.Part.createFormData("response_format", response_format)
+        } else {
+            null
+        }
+        val userPart = if (user != null) {
+            MultipartBody.Part.createFormData("user", user)
+        } else {
+            null
+        }
+        return api.editImage(imagePart, promptPart, maskPart, nPart, sizePart, responseFormatPart, userPart)
+    }
+
+    suspend fun variationImage(
+        @Part image: MultipartBody.Part,
+        @Part n: Int? = null,
+        @Part size: String? = null,
+        @Part response_format: String? = null,
+        @Part user: String? = null
+    ): ImageGeneration {
+        return api.variationImage(image, n, size, response_format, user)
     }
 
     fun completionsByStream(
@@ -161,10 +213,8 @@ class ChatGPT private constructor() {
         apiKeys: List<String>
     ): OkHttpClient {
         val proxy = if (proxyType != null && proxyUrl?.isNotBlank() == true && proxyPort != null) {
-            Log.e(TAG, "initOkHttp: you" )
             Proxy(Proxy.Type.SOCKS, InetSocketAddress(proxyUrl, proxyPort!!))
         } else {
-            Log.e(TAG, "initOkHttp: WU" )
             null
         }
         return OkHttpClient.Builder()

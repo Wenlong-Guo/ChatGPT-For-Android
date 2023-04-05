@@ -53,7 +53,11 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
         binding.button.setOnClickListener {
 //            copyAssetFileToCache(this@ChatActivity, "ic_edit_image.png")
 //            viewModel.variationImage(File(cacheDir.absolutePath, "ic_edit_image.png"))
-            viewModel.embeddings()
+//            viewModel.embeddings()
+
+//            copyAssetFileToCache(this@ChatActivity, "shinian.mp3")
+//            viewModel.translation(File(cacheDir.absolutePath, "shinian.mp3"))
+
             return@setOnClickListener
         }
         binding.btnSend.setOnClickListener {

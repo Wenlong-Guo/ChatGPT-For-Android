@@ -141,4 +141,13 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
         )
         logE("embeddings: $embeddings")
     }
+
+    fun translation(file: File) = launch {
+        val translation = repository.translation(
+            file = file,
+            model = "whisper-1",
+            language = "zh",
+        )
+        logE("translation: $translation")
+    }
 }

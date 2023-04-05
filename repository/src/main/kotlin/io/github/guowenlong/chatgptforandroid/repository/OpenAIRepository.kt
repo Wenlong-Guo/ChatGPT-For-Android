@@ -67,4 +67,15 @@ class OpenAIRepository(private val chatGPT: ChatGPT) : BaseRepository() {
     suspend fun getEmbeddings(embeddingsRequest: EmbeddingsRequest) = request {
         chatGPT.embeddings(embeddingsRequest)
     }
+
+    suspend fun translation(
+        file: File,
+        model: String,
+        prompt: String? = null,
+        response_format: String? = null,
+        temperature: Double? = null,
+        language: String? = null
+    ) = request {
+        chatGPT.translation(file, model, prompt, response_format, temperature, language)
+    }
 }

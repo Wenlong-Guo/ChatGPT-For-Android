@@ -54,4 +54,15 @@ interface OpenAIApi {
 
     @POST("/v1/embeddings")
     suspend fun embeddings(@Body body: EmbeddingsRequest): Embedding
+
+    @Multipart
+    @POST("/v1/audio/transcriptions")
+    suspend fun translation(
+        @Part file: MultipartBody.Part,
+        @Part model: MultipartBody.Part,
+        @Part prompt: MultipartBody.Part? = null,
+        @Part response_format: MultipartBody.Part? = null,
+        @Part temperature: MultipartBody.Part? = null,
+        @Part language: MultipartBody.Part? = null,
+    ): Translation
 }

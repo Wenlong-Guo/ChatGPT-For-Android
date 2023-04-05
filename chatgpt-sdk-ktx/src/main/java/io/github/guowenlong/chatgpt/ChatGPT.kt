@@ -169,6 +169,47 @@ class ChatGPT private constructor() {
         return api.embeddings(embeddingsRequest)
     }
 
+    suspend fun translation(
+        @Part file: File,
+        @Part model: String,
+        @Part prompt: String? = null,
+        @Part response_format: String? = null,
+        @Part temperature: Double? = null,
+        @Part language: String? = null
+    ): Translation {
+        val requestBody = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val filePart = MultipartBody.Part.createFormData("file", file.name, requestBody)
+        val modelPart = MultipartBody.Part.createFormData("model", model)
+        val promptPart = if (prompt != null) {
+            MultipartBody.Part.createFormData("prompt", prompt)
+        } else {
+            null
+        }
+        val responseFormatPart = if (response_format != null) {
+            MultipartBody.Part.createFormData("response_format", response_format)
+        } else {
+            null
+        }
+        val temperaturePart = if (temperature != null) {
+            MultipartBody.Part.createFormData("temperature", temperature.toString())
+        } else {
+            null
+        }
+        val languagePart = if (language != null) {
+            MultipartBody.Part.createFormData("language", language)
+        } else {
+            null
+        }
+        return api.translation(
+            filePart,
+            modelPart,
+            promptPart,
+            responseFormatPart,
+            temperaturePart,
+            languagePart
+        )
+    }
+
     fun completionsByStream(
         completionRequest: CompletionRequest,
         listener: StreamListener
@@ -189,9 +230,10 @@ class ChatGPT private constructor() {
 
         var isCreate = false
         try {
-            val json = Moshi.Builder().build()
-                .adapter(CompletionRequest::class.java)
-                .toJson(completionRequest)
+            val json =
+                Moshi.Builder().build()
+                    .adapter(CompletionRequest::class.java)
+                    .toJson(completionRequest)
 
             connection.requestMethod = "POST"
             connection.setRequestProperty(

@@ -119,4 +119,13 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
         )
         logE("editImage: $imageGeneration")
     }
+
+    fun variationImage(image: File) = launch {
+        val imageGeneration = repository.variationImage(
+            image = image,
+            size = "256x256",
+            n = 2
+        )
+        logE("editImage: $imageGeneration")
+    }
 }

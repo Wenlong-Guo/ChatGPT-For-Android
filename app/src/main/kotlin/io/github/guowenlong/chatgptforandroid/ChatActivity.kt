@@ -52,7 +52,7 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
     override fun bind() {
         binding.button.setOnClickListener {
             copyAssetFileToCache(this@ChatActivity, "ic_edit_image.png")
-            viewModel.editImage(File(cacheDir.absolutePath, "ic_edit_image.png"))
+            viewModel.variationImage(File(cacheDir.absolutePath, "ic_edit_image.png"))
             return@setOnClickListener
         }
         binding.btnSend.setOnClickListener {

@@ -7,7 +7,6 @@ import io.github.guowenlong.chatgpt.model.request.EditRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.ImageGeneration
 import io.github.guowenlong.chatgptforandroid.common.base.BaseRepository
-import okhttp3.MultipartBody
 import java.io.File
 
 
@@ -55,7 +54,7 @@ class OpenAIRepository(private val chatGPT: ChatGPT) : BaseRepository() {
     }
 
     suspend fun variationImage(
-        image: MultipartBody.Part,
+        image: File,
         n: Int? = null,
         size: String? = null,
         response_format: String? = null,

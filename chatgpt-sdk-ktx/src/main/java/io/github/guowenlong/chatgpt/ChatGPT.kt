@@ -125,13 +125,35 @@ class ChatGPT private constructor() {
     }
 
     suspend fun variationImage(
-        @Part image: MultipartBody.Part,
+        @Part image: File,
         @Part n: Int? = null,
         @Part size: String? = null,
         @Part response_format: String? = null,
         @Part user: String? = null
     ): ImageGeneration {
-        return api.variationImage(image, n, size, response_format, user)
+        val requestBody = image.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val imagePart = MultipartBody.Part.createFormData("image", image.name, requestBody)
+        val nPart = if (n != null) {
+            MultipartBody.Part.createFormData("n", n.toString())
+        } else {
+            null
+        }
+        val sizePart = if (size != null) {
+            MultipartBody.Part.createFormData("size", size)
+        } else {
+            null
+        }
+        val responseFormatPart = if (response_format != null) {
+            MultipartBody.Part.createFormData("response_format", response_format)
+        } else {
+            null
+        }
+        val userPart = if (user != null) {
+            MultipartBody.Part.createFormData("user", user)
+        } else {
+            null
+        }
+        return api.variationImage(imagePart, nPart, sizePart, responseFormatPart, userPart)
     }
 
     fun completionsByStream(

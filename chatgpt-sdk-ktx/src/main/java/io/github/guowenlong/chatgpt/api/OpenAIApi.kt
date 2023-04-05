@@ -48,9 +48,9 @@ interface OpenAIApi {
     @POST("/v1/images/variations")
     suspend fun variationImage(
         @Part image: MultipartBody.Part,
-        @Part n: Int? = null,
-        @Part size: String? = null,
-        @Part response_format: String? = null,
-        @Part user: String? = null
+        @Part n: MultipartBody.Part? = null,
+        @Part size: MultipartBody.Part? = null,
+        @Part response_format: MultipartBody.Part? = null,
+        @Part user: MultipartBody.Part? = null
     ): ImageGeneration
 }

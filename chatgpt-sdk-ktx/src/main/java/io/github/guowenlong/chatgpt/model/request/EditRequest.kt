@@ -1,5 +1,6 @@
 package io.github.guowenlong.chatgpt.model.request
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
@@ -10,10 +11,16 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class EditRequest(
+    @field:Json(name = "model")
     val model: String,
+    @field:Json(name = "instruction")
     val instruction: String,
+    @field:Json(name = "input")
     val input: String? = null,
+    @field:Json(name = "n")
     val n: Int? = null,
+    @field:Json(name = "temperature")
     val temperature: Double? = null,
+    @field:Json(name = "top_p")
     val top_p: Double? = null,
 )

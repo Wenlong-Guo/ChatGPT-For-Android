@@ -7,6 +7,7 @@ import io.github.guowenlong.chatgpt.api.OpenAIApi
 import io.github.guowenlong.chatgpt.interceptor.TokenInterceptor
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.EmbeddingsRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.*
 import io.github.guowenlong.chatgpt.utils.RandomUtil
@@ -121,7 +122,15 @@ class ChatGPT private constructor() {
         } else {
             null
         }
-        return api.editImage(imagePart, promptPart, maskPart, nPart, sizePart, responseFormatPart, userPart)
+        return api.editImage(
+            imagePart,
+            promptPart,
+            maskPart,
+            nPart,
+            sizePart,
+            responseFormatPart,
+            userPart
+        )
     }
 
     suspend fun variationImage(
@@ -154,6 +163,10 @@ class ChatGPT private constructor() {
             null
         }
         return api.variationImage(imagePart, nPart, sizePart, responseFormatPart, userPart)
+    }
+
+    suspend fun embeddings(embeddingsRequest: EmbeddingsRequest): Embedding {
+        return api.embeddings(embeddingsRequest)
     }
 
     fun completionsByStream(

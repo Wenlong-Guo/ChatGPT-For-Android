@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import io.github.guowenlong.chatgpt.StreamListener
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.EmbeddingsRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
 import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
@@ -103,11 +104,13 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
     }
 
     fun generationImage() = launch {
-        val generationImage = repository.generationImage(ImageGenerationRequest(
-            prompt = "A cute West Highland",
-            n = 2,
-            size = "1024x1024"
-        ))
+        val generationImage = repository.generationImage(
+            ImageGenerationRequest(
+                prompt = "A cute West Highland",
+                n = 2,
+                size = "1024x1024"
+            )
+        )
         logE("generationImage: $generationImage")
     }
 
@@ -127,5 +130,15 @@ class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() 
             n = 2
         )
         logE("editImage: $imageGeneration")
+    }
+
+    fun embeddings() = launch {
+        val embeddings = repository.getEmbeddings(
+            EmbeddingsRequest(
+                model = "text-embedding-ada-002",
+                input = "The food was delicious and the waiter",
+            )
+        )
+        logE("embeddings: $embeddings")
     }
 }

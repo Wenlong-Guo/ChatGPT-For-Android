@@ -2,11 +2,9 @@ package io.github.guowenlong.chatgpt.api
 
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.EditRequest
+import io.github.guowenlong.chatgpt.model.request.EmbeddingsRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
-import io.github.guowenlong.chatgpt.model.response.Completion
-import io.github.guowenlong.chatgpt.model.response.Edits
-import io.github.guowenlong.chatgpt.model.response.ImageGeneration
-import io.github.guowenlong.chatgpt.model.response.Model
+import io.github.guowenlong.chatgpt.model.response.*
 import okhttp3.MultipartBody
 import retrofit2.http.*
 
@@ -53,4 +51,7 @@ interface OpenAIApi {
         @Part response_format: MultipartBody.Part? = null,
         @Part user: MultipartBody.Part? = null
     ): ImageGeneration
+
+    @POST("/v1/embeddings")
+    suspend fun embeddings(@Body body: EmbeddingsRequest): Embedding
 }

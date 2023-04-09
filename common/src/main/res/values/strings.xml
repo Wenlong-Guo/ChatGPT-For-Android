@@ -17,4 +17,5 @@
     <string name="hint_api_key">请输入 api key</string>
     <string name="please_input_host">请输入主机地址</string>
     <string name="api_host_title">主机地址</string>
+    <string name="create_image">生成图片</string>
 </resources>

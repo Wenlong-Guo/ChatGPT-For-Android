@@ -8,5 +8,8 @@
         <activity
             android:name=".completion.ChatSettingActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".image.ImageCreateActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

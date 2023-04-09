@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import io.github.guowenlong.chatgpt.ChatGPT
 import io.github.guowenlong.chatgpt.StreamListener
 import io.github.guowenlong.chatgpt.model.request.CompletionRequest
+import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
+import io.github.guowenlong.chatgpt.model.response.ImageGeneration
 import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
 import io.github.guowenlong.chatgptforandroid.common.base.Status
 import io.github.guowenlong.chatgptforandroid.common.ext.logE
@@ -69,14 +71,21 @@ class ChatGPTViewModel(private val repository: ChatGPTRepository) : BaseViewMode
         }
     }
 
-    fun completionStream(completionRequest: CompletionRequest) = launch {
+    private fun completionStream(completionRequest: CompletionRequest) = launch {
+        completionRequest.temperature = sp.chatTemperature.toDouble()
+        completionRequest.top_p = sp.chatTopP.toDouble()
+        if (sp.chatMaxToken != 2048) {
+            completionRequest.max_tokens = sp.chatMaxToken
+        }
+        completionRequest.presence_penalty = sp.chatPresencePenalty.toDouble()
+        completionRequest.frequency_penalty = sp.chatFrequencyPenalty.toDouble()
         repository.getCompletionsByString(
             completionRequest, object : StreamListener {
                 override fun onStart() {
                     logI("onStart")
                     _statusLiveData.postValue(Status.Loading)
                     UserChat(
-                        content = completionRequest.messages[completionRequest.messages.size-1].content,
+                        content = completionRequest.messages[completionRequest.messages.size - 1].content,
                         time = System.currentTimeMillis()
                     ).let {
                         data.add(it)
@@ -116,5 +125,24 @@ class ChatGPTViewModel(private val repository: ChatGPTRepository) : BaseViewMode
                 }
             }
         )
+    }
+
+    private val _insertImageGPTChatLiveData = MutableLiveData<ImageGeneration>()
+    val insertImageGPTChatLiveData: LiveData<ImageGeneration> = _insertImageGPTChatLiveData
+
+    fun createImage(imageGenerationRequest: ImageGenerationRequest) = launch {
+        val time = System.currentTimeMillis()
+        _statusLiveData.postValue(Status.Loading)
+        UserChat(
+            content = imageGenerationRequest.prompt,
+            time = time
+        ).let {
+            data.add(it)
+            _insertUserChatLiveData.postValue(it.content)
+        }
+        val image = repository.generationImage(imageGenerationRequest)
+        data.add(image)
+        _insertImageGPTChatLiveData.postValue(image)
+        _statusLiveData.postValue(Status.Completed)
     }
 }

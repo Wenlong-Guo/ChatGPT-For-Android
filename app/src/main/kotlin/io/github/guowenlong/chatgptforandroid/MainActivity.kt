@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.completion.ChatActivity
+import io.github.guowenlong.chatgptforandroid.chat.image.ImageCreateActivity
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
 import io.github.guowenlong.chatgptforandroid.common.components.SpProperty
 import io.github.guowenlong.chatgptforandroid.databinding.ActivityMainBinding
@@ -29,7 +30,10 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
             if (checkApiKeyNull()) return@setOnClickListener
             startActivity(Intent(this@MainActivity, ChatActivity::class.java))
         }
-
+        binding.cvCreateImage.setOnClickListener {
+            if (checkApiKeyNull()) return@setOnClickListener
+            startActivity(Intent(this@MainActivity, ImageCreateActivity::class.java))
+        }
         binding.ivSetting.setOnClickListener {
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
         }

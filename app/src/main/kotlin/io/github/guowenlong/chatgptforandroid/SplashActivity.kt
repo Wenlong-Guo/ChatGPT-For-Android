@@ -23,7 +23,7 @@ class SplashActivity :BaseActivity<ActivitySplashBinding>() {
     override fun init(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             delay(2000)
-            startActivity(Intent(this@SplashActivity, ChatActivity::class.java))
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
         }
     }

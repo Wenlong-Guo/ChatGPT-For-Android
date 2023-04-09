@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="status_bar">#4D4D4D</color>
+    <color name="card_background">#3D3D3D</color>
+</resources>

@@ -11,17 +11,17 @@ import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
 import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
 import io.github.guowenlong.chatgptforandroid.common.ext.logE
-import io.github.guowenlong.chatgptforandroid.repository.OpenAIRepository
+import io.github.guowenlong.chatgptforandroid.repository.ChatGPTRepository
 import kotlinx.coroutines.launch
 import java.io.File
 
 /**
- * Description: [ChatActivity]的ViewModel
+ * Description: [MainActivity]的ViewModel
  * Author:      郭文龙
  * Date:        2023/3/31 2:38
  * Email:       guowenlong20000@sina.com
  */
-class MainViewModel(private val repository: OpenAIRepository) : BaseViewModel() {
+class MainViewModel(private val repository: ChatGPTRepository) : BaseViewModel() {
 
     val data = mutableListOf<Any>()
 

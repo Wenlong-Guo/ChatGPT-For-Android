@@ -29,7 +29,7 @@ dependencyResolutionManagement {
 rootProject.name = "ChatGPT For Android"
 
 include(":app")
-include(":feature:login")
+include(":feature:setting")
 include(":feature:chat")
 include(":common")
 include(":model")

@@ -55,8 +55,10 @@ dependencies {
     api(libs.okhttp.log)
     api(libs.retrofit)
     api(libs.retrofit.converter.moshi)
+    api(libs.status.bar.util)
     api(libs.toaster)
     api(libs.multitype)
     api(libs.xxpermission)
     api(project(":model"))
+    debugImplementation(libs.leakcanary)
 }

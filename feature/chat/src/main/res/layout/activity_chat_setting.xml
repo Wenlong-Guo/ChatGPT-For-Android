@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/status_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/card_background"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@android:drawable/arrow_down_float"
+                android:text="@string/back"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:id="@+id/tv_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Temperature ( 0.0 ~ 2.0 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_current_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="1.0"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_temperature"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SeekBar
+                    android:id="@+id/sb_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="20"
+                    android:progress="10"
+                    app:layout_constraintTop_toBottomOf="@id/tv_temperature" />
+
+                <TextView
+                    android:id="@+id/tv_top_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="top_p ( 0.0 ~ 1.0 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_temperature" />
+
+                <TextView
+                    android:id="@+id/tv_current_top_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="1.0"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_top_p"
+                    app:layout_constraintTop_toBottomOf="@id/sb_temperature" />
+
+                <SeekBar
+                    android:id="@+id/sb_top_p"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="10"
+                    android:progress="10"
+                    app:layout_constraintTop_toBottomOf="@id/tv_top_p" />
+
+                <TextView
+                    android:id="@+id/tv_max_token"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="max token ( 0 ~ 2048 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_top_p" />
+
+                <TextView
+                    android:id="@+id/tv_current_max_token"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="2048"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_max_token"
+                    app:layout_constraintTop_toBottomOf="@id/sb_top_p" />
+
+                <SeekBar
+                    android:id="@+id/sb_max_token"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="2048"
+                    android:progress="2048"
+                    app:layout_constraintTop_toBottomOf="@id/tv_max_token" />
+
+                <TextView
+                    android:id="@+id/tv_presence_penalty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="presence penalty ( -2 ~ 2 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_max_token" />
+
+                <TextView
+                    android:id="@+id/tv_current_presence_penalty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="20"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_presence_penalty"
+                    app:layout_constraintTop_toBottomOf="@id/sb_max_token" />
+
+                <SeekBar
+                    android:id="@+id/sb_presence_penalty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="40"
+                    android:progress="20"
+                    app:layout_constraintTop_toBottomOf="@id/tv_presence_penalty" />
+
+                <TextView
+                    android:id="@+id/tv_frequency_penalty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="frequency penalty ( -2 ~ 2 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_presence_penalty" />
+
+                <TextView
+                    android:id="@+id/tv_current_frequency_penalty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="20"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_frequency_penalty"
+                    app:layout_constraintTop_toBottomOf="@id/sb_presence_penalty" />
+
+                <SeekBar
+                    android:id="@+id/sb_frequency_penalty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="40"
+                    android:progress="20"
+                    app:layout_constraintTop_toBottomOf="@id/tv_frequency_penalty" />
+
+                <TextView
+                    android:id="@+id/tv_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="context ( 0 ~ 20 ) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_frequency_penalty" />
+
+                <TextView
+                    android:id="@+id/tv_current_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_context"
+                    app:layout_constraintTop_toBottomOf="@id/sb_frequency_penalty" />
+
+                <SeekBar
+                    android:id="@+id/sb_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="20"
+                    android:progress="3"
+                    app:layout_constraintTop_toBottomOf="@id/tv_context" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

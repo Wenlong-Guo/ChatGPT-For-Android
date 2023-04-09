@@ -14,7 +14,7 @@ data class CompletionRequest(
     @field:Json(name = "model")
     val model: String = "gpt-3.5-turbo",
     @field:Json(name = "messages")
-    val messages: List<Message>,
+    var messages: List<Message>,
     @field:Json(name = "temperature")
     val temperature: Double? = null,
     @field:Json(name = "top_p")
@@ -32,7 +32,7 @@ data class CompletionRequest(
     @field:Json(name = "frequency_penalty")
     val frequency_penalty: Double? = null,
     @field:Json(name = "logit_bias")
-    val logprlogit_biasobs: Any? = null,
+    val logit_bias: Any? = null,
     @field:Json(name = "user")
     val user: String? = null,
 ) {

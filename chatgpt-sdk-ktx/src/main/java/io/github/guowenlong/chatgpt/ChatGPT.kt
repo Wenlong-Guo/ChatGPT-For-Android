@@ -63,6 +63,7 @@ class ChatGPT private constructor() {
         )
         retrofit = initRetrofit(builder.baseUrl)
         api = initApi()
+
     }
 
     suspend fun getModels(): Model {

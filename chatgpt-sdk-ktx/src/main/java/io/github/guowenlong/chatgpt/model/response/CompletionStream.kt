@@ -14,7 +14,7 @@ data class CompletionStream(
     @field:Json(name = "choices")
     val choices: List<Choice>,
     @field:Json(name = "created")
-    val created: Int,
+    val created: Long,
     @field:Json(name = "id")
     val id: String,
     @field:Json(name = "model")
@@ -22,6 +22,8 @@ data class CompletionStream(
     @field:Json(name = "object")
     val `object`: String? = null,
 ) {
+    var time: Long? = null
+
     @JsonClass(generateAdapter = true)
     data class Choice(
         @field:Json(name = "finish_reason")

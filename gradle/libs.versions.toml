@@ -90,6 +90,8 @@ retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter
 moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 moshi-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
 
+status-bar-util = { group = "com.jaeger.statusbarutil", name = "library", version = "1.4.0" }
+
 toaster = { group = "com.github.getActivity", name = "Toaster", version.ref = "toaster" }
 
 multitype = { group = "com.drakeet.multitype", name = "multitype", version.ref = "multitype" }

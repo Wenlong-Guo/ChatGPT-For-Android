@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">返回</string>
+    <string name="setting">设置</string>
+    <string name="settings">设置</string>
+    <string name="proxy">代理</string>
+    <string name="please_inter_proxy_url">请输入代理地址</string>
+    <string name="please_input_proxy_port">请输入代理端口</string>
+    <string name="api_key">Api Key:</string>
+    <string name="proxy_type">代理类型</string>
+    <string name="proxy_host">代理地址</string>
+    <string name="proxy_port">代理端口号</string>
+    <string name="http">http</string>
+    <string name="no_proxy">无</string>
+    <string name="socks">socks</string>
+    <string name="direct">direct</string>
+    <string name="hint_api_key">请输入 api key</string>
+    <string name="please_input_host">请输入主机地址</string>
+    <string name="api_host_title">主机地址</string>
+</resources>

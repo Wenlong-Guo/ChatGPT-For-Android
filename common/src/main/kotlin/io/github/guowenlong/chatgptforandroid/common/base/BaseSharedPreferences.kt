@@ -98,19 +98,19 @@ open class BaseSharedPreferences {
             }
 
 
-        fun string(defaultValue: String? = null) =
-            object : ReadWriteProperty<BaseSharedPreferences, String?> {
+        fun string(defaultValue: String = "") =
+            object : ReadWriteProperty<BaseSharedPreferences, String> {
                 override fun getValue(
                     thisRef: BaseSharedPreferences,
                     property: KProperty<*>
-                ): String? {
-                    return thisRef.preferences.getString(property.name + debug, defaultValue)
+                ): String {
+                    return thisRef.preferences.getString(property.name + debug, defaultValue) ?: ""
                 }
 
                 override fun setValue(
                     thisRef: BaseSharedPreferences,
                     property: KProperty<*>,
-                    value: String?
+                    value: String
                 ) {
                     thisRef.preferences.edit().putString(property.name + debug, value).commit()
                 }

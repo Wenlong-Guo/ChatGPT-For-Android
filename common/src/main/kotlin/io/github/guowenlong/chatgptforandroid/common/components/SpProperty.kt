@@ -23,4 +23,6 @@ class SpProperty : BaseSharedPreferences() {
     var chatFrequencyPenalty by Delegates.float(0.0F)
     var chatContextCount by Delegates.int(3)
 
+    var imageCreateN by Delegates.int(1)
+    var imageCreateSize by Delegates.string("1024x1024")
 }

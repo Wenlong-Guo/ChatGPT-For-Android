@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.completion.ChatActivity
 import io.github.guowenlong.chatgptforandroid.chat.image.ImageCreateActivity
@@ -32,7 +34,17 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         }
         binding.cvCreateImage.setOnClickListener {
             if (checkApiKeyNull()) return@setOnClickListener
-            startActivity(Intent(this@MainActivity, ImageCreateActivity::class.java))
+            XXPermissions.with(this).permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                .request { permissions, allGranted ->
+                    if (allGranted) {
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                ImageCreateActivity::class.java
+                            )
+                        )
+                    }
+                }
         }
         binding.ivSetting.setOnClickListener {
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))

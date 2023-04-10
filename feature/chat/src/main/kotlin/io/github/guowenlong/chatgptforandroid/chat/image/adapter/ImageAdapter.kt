@@ -1,9 +1,11 @@
 package io.github.guowenlong.chatgptforandroid.chat.image.adapter
 
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import io.github.guowenlong.chatgpt.model.response.ImageGeneration
 import io.github.guowenlong.chatgptforandroid.chat.R
 import io.github.guowenlong.chatgptforandroid.chat.databinding.ItemImageBinding
+import io.github.guowenlong.chatgptforandroid.common.DownloadUtils
 import io.github.guowenlong.chatgptforandroid.common.base.BaseBindingAdapter
 import io.github.guowenlong.chatgptforandroid.common.base.BaseBindingViewHolder
 
@@ -13,7 +15,8 @@ import io.github.guowenlong.chatgptforandroid.common.base.BaseBindingViewHolder
  * Date:        2023/4/10 2:12
  * Email:       guowenlong20000@sina.com
  */
-class ImageAdapter(override val itemLayoutId: Int = R.layout.item_image) : BaseBindingAdapter<ImageGeneration.Data,ItemImageBinding>() {
+class ImageAdapter(override val itemLayoutId: Int = R.layout.item_image) :
+    BaseBindingAdapter<ImageGeneration.Data, ItemImageBinding>() {
 
     override fun bindData(
         holder: BaseBindingViewHolder<ItemImageBinding>,
@@ -22,5 +25,13 @@ class ImageAdapter(override val itemLayoutId: Int = R.layout.item_image) : BaseB
         binding: ItemImageBinding
     ) {
         Glide.with(binding.root.context).load(itemData.url).into(binding.ivImage)
+        binding.ivImage.setOnLongClickListener {
+            DownloadUtils.downloadPic(binding.root.context, itemData.url, {
+                Toast.makeText(binding.root.context, "图片已保存到 $it", Toast.LENGTH_LONG).show()
+            }, {
+                Toast.makeText(binding.root.context, "下载失败", Toast.LENGTH_SHORT).show()
+            })
+            return@setOnLongClickListener true
+        }
     }
 }

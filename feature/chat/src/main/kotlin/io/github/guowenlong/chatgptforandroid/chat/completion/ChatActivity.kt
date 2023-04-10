@@ -93,7 +93,6 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
             startActivity(Intent(this@ChatActivity, ChatSettingActivity::class.java))
         }
         binding.btnSend.setOnClickListener {
-            binding.etContent.setText("")
             viewModel.completionStreamWithContext(
                 CompletionRequest(
                     messages = listOf(
@@ -104,6 +103,7 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
                 ),
                 count = sp.chatContextCount
             )
+            binding.etContent.setText("")
         }
     }
 }

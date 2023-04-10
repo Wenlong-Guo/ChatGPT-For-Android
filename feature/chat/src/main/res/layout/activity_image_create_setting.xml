@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/status_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/card_background"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@android:drawable/arrow_down_float"
+                android:text="@string/back"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:id="@+id/tv_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="生成个数 (1 ~ 10) 当前值:"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_current_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tv_n"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SeekBar
+                    android:id="@+id/sb_n"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:max="10"
+                    android:progress="1"
+                    app:layout_constraintTop_toBottomOf="@id/tv_n" />
+
+                <TextView
+                    android:id="@+id/tv_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="分辨率"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sb_n" />
+
+                <RadioGroup
+                    android:id="@+id/rg_proxy_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/tv_size">
+
+                    <RadioButton
+                        android:id="@+id/rb_256"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="256x256"
+                        android:textColor="@android:color/white" />
+
+                    <RadioButton
+                        android:id="@+id/rb_512"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="512x512"
+                        android:textColor="@android:color/white" />
+
+                    <RadioButton
+                        android:id="@+id/rb_1024"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1024x1024"
+                        android:textColor="@android:color/white" />
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

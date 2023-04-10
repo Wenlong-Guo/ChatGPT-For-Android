@@ -11,5 +11,8 @@
         <activity
             android:name=".image.ImageCreateActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".image.ImageCreateSettingActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

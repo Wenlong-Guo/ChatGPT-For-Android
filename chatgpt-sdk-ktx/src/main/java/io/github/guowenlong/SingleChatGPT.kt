@@ -3,7 +3,7 @@ package io.github.guowenlong
 import io.github.guowenlong.chatgpt.ChatGPT
 
 /**
- * Description:
+ * Description: 保持一个单例的[ChatGPT]
  * Author:      郭文龙
  * Date:        2023/4/8 23:11
  * Email:       guowenlong20000@sina.com

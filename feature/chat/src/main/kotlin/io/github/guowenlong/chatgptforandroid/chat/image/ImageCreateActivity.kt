@@ -1,5 +1,6 @@
 package io.github.guowenlong.chatgptforandroid.chat.image
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +41,7 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
             this@ImageCreateActivity,
             resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.status_bar)
         )
-        val layoutManager =  binding.rvContent.layoutManager as LinearLayoutManager
+        val layoutManager = binding.rvContent.layoutManager as LinearLayoutManager
 
         binding.rvContent.itemAnimator = null
 
@@ -87,13 +88,18 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
     }
 
     override fun bind() {
+        binding.ivSetting.setOnClickListener {
+            startActivity(Intent(this@ImageCreateActivity, ImageCreateSettingActivity::class.java))
+        }
         binding.btnSend.setOnClickListener {
             viewModel.createImage(
                 ImageGenerationRequest(
                     prompt = binding.etContent.text.toString(),
-                    n = 4
+                    n = sp.imageCreateN,
+                    size = sp.imageCreateSize
                 )
             )
+            binding.etContent.setText("")
         }
     }
 }

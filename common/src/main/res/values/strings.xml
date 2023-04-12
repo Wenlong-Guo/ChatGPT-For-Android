@@ -18,4 +18,7 @@
     <string name="please_input_host">请输入主机地址</string>
     <string name="api_host_title">主机地址</string>
     <string name="create_image">生成图片</string>
+    <string name="translation">翻译</string>
+    <string name="translation_setting">翻译设置页</string>
+
 </resources>

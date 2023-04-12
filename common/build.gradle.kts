@@ -59,6 +59,7 @@ dependencies {
     api(libs.toaster)
     api(libs.multitype)
     api(libs.xxpermission)
+    api("com.github.ZLYang110:FileSelector:2.1.6")
     api(project(":model"))
     debugImplementation(libs.leakcanary)
 }

@@ -9,6 +9,7 @@ import com.hjq.permissions.XXPermissions
 import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.completion.ChatActivity
 import io.github.guowenlong.chatgptforandroid.chat.image.ImageCreateActivity
+import io.github.guowenlong.chatgptforandroid.chat.translation.TranslationActivity
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
 import io.github.guowenlong.chatgptforandroid.common.components.SpProperty
 import io.github.guowenlong.chatgptforandroid.databinding.ActivityMainBinding
@@ -35,12 +36,26 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         binding.cvCreateImage.setOnClickListener {
             if (checkApiKeyNull()) return@setOnClickListener
             XXPermissions.with(this).permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                .request { permissions, allGranted ->
+                .request { _, allGranted ->
                     if (allGranted) {
                         startActivity(
                             Intent(
                                 this@MainActivity,
                                 ImageCreateActivity::class.java
+                            )
+                        )
+                    }
+                }
+        }
+        binding.cvVoice.setOnClickListener {
+            if (checkApiKeyNull()) return@setOnClickListener
+            XXPermissions.with(this).permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                .request { _, allGranted ->
+                    if (allGranted) {
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                TranslationActivity::class.java
                             )
                         )
                     }

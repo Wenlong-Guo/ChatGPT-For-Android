@@ -25,4 +25,8 @@ class SpProperty : BaseSharedPreferences() {
 
     var imageCreateN by Delegates.int(1)
     var imageCreateSize by Delegates.string("1024x1024")
+
+    var translationTemperature by Delegates.float(1.0F)
+    var translationPrompt by Delegates.string()
+    var translationLanguage by Delegates.string("zh")
 }

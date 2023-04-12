@@ -29,7 +29,7 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
 
     private val viewModel by viewModel<ChatGPTViewModel>()
 
-    val sp: SpProperty by KoinJavaComponent.inject(SpProperty::class.java)
+    private val sp: SpProperty by KoinJavaComponent.inject(SpProperty::class.java)
 
     private val adapter by lazy { MultiTypeAdapter() }
 
@@ -88,6 +88,9 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
     }
 
     override fun bind() {
+        binding.tvBack.setOnClickListener {
+            finish()
+        }
         binding.ivSetting.setOnClickListener {
             startActivity(Intent(this@ImageCreateActivity, ImageCreateSettingActivity::class.java))
         }

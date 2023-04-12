@@ -10,13 +10,16 @@ import io.github.guowenlong.chatgpt.model.request.CompletionRequest
 import io.github.guowenlong.chatgpt.model.request.ImageGenerationRequest
 import io.github.guowenlong.chatgpt.model.response.CompletionStream
 import io.github.guowenlong.chatgpt.model.response.ImageGeneration
+import io.github.guowenlong.chatgpt.model.response.Translation
 import io.github.guowenlong.chatgptforandroid.common.base.BaseViewModel
 import io.github.guowenlong.chatgptforandroid.common.base.Status
 import io.github.guowenlong.chatgptforandroid.common.ext.logE
 import io.github.guowenlong.chatgptforandroid.common.ext.logI
 import io.github.guowenlong.chatgptforandroid.model.UserChat
+import io.github.guowenlong.chatgptforandroid.model.UserTranslation
 import io.github.guowenlong.chatgptforandroid.repository.ChatGPTRepository
 import kotlinx.coroutines.launch
+import java.io.File
 
 /**
  * Description: [ChatGPT]相关的[ViewModel]
@@ -144,5 +147,38 @@ class ChatGPTViewModel(private val repository: ChatGPTRepository) : BaseViewMode
         data.add(image)
         _insertImageGPTChatLiveData.postValue(image)
         _statusLiveData.postValue(Status.Completed)
+    }
+
+    private val _insertTranslationGPTChatLiveData = MutableLiveData<Translation>()
+    val insertTranslationGPTChatLiveData: LiveData<Translation> = _insertTranslationGPTChatLiveData
+
+    fun translation(
+        file: File, language: String = "zh",
+        prompt: String? = null,
+        response_format: String? = null,
+        temperature: Double? = null,
+    ) = launch {
+        val time = System.currentTimeMillis()
+        _statusLiveData.postValue(Status.Loading)
+        UserTranslation(
+            prompt = prompt,
+            filePath = file.absolutePath,
+            time = time
+        ).let {
+            data.add(it)
+            _insertUserChatLiveData.postValue(it.filePath)
+        }
+        val translation = repository.translation(
+            file,
+            language = language,
+            model = "whisper-1",
+            response_format = response_format,
+            temperature = temperature,
+            prompt = prompt
+        )
+        data.add(translation)
+        _insertTranslationGPTChatLiveData.postValue(translation)
+        _statusLiveData.postValue(Status.Completed)
+        logE("translation $translation")
     }
 }

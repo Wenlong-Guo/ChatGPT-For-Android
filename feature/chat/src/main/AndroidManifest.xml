@@ -14,5 +14,11 @@
         <activity
             android:name=".image.ImageCreateSettingActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".translation.TranslationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".translation.TranslationSettingActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

@@ -99,7 +99,12 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
                         CompletionRequest.Message(
                             content = binding.etContent.text.toString()
                         )
-                    )
+                    ),
+                    temperature = sp.chatTemperature.toDouble(),
+                    top_p = sp.chatTopP.toDouble(),
+                    max_tokens =  sp.chatMaxToken,
+                    presence_penalty = sp.chatPresencePenalty.toDouble(),
+                    frequency_penalty = sp.chatFrequencyPenalty.toDouble(),
                 ),
                 count = sp.chatContextCount
             )

@@ -31,7 +31,7 @@ class App : BaseApplication() {
         sp.init(this)
         if (sp.openAPIKey.isNotBlank()) {
             SingleChatGPT.instance = ChatGPT.Builder()
-                .setReadTimeout(2 * 60_000)
+                .setReadTimeout(60_000)
                 .setWriteTimeout(2 * 60_000)
                 .setConnectTimeout(2 * 60_000)
                 .setBaseUrl(sp.openAPIHost)

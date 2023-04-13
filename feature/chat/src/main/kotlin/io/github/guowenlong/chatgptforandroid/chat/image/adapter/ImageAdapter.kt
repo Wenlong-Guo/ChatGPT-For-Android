@@ -27,9 +27,20 @@ class ImageAdapter(override val itemLayoutId: Int = R.layout.item_image) :
         Glide.with(binding.root.context).load(itemData.url).into(binding.ivImage)
         binding.ivImage.setOnLongClickListener {
             DownloadUtils.downloadPic(binding.root.context, itemData.url, {
-                Toast.makeText(binding.root.context, "图片已保存到 $it", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    binding.root.context,
+                    binding.root.resources.getString(
+                        io.github.guowenlong.chatgptforandroid.common.R.string.the_picture_is_saved_to,
+                        it
+                    ),
+                    Toast.LENGTH_LONG
+                ).show()
             }, {
-                Toast.makeText(binding.root.context, "下载失败", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    binding.root.context,
+                    binding.root.resources.getString(io.github.guowenlong.chatgptforandroid.common.R.string.download_failed),
+                    Toast.LENGTH_SHORT
+                ).show()
             })
             return@setOnLongClickListener true
         }

@@ -22,5 +22,5 @@ data class EditRequest(
     @field:Json(name = "temperature")
     val temperature: Double? = null,
     @field:Json(name = "top_p")
-    val top_p: Double? = null,
+    val topP: Double? = null,
 )

@@ -71,7 +71,7 @@ class TranslationActivity(override val layoutId: Int = R.layout.activity_transla
         viewModel.statusLiveData.observe(this) {
             when (it) {
                 is Status.Loading -> {
-                    binding.tvDesc.text = "正在翻译..."
+                    binding.tvDesc.text = getString(io.github.guowenlong.chatgptforandroid.common.R.string.translating)
                 }
                 is Status.Completed -> {
                     binding.tvDesc.text = ""
@@ -115,8 +115,8 @@ class TranslationActivity(override val layoutId: Int = R.layout.activity_transla
                 .start()
         }
         binding.btnSend.setOnClickListener {
-            if (binding.tvFile.text == "选择文件") {
-                Toast.makeText(this, "请选择文件", Toast.LENGTH_SHORT).show()
+            if (binding.tvFile.text == getString(io.github.guowenlong.chatgptforandroid.common.R.string.select_file)) {
+                Toast.makeText(this, getString(io.github.guowenlong.chatgptforandroid.common.R.string.please_select_a_file), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             viewModel.translation(
@@ -124,7 +124,7 @@ class TranslationActivity(override val layoutId: Int = R.layout.activity_transla
                 temperature = sp.translationTemperature.toDouble(),
                 language = sp.translationLanguage,
             )
-            binding.tvFile.text = "选择文件"
+            binding.tvFile.text = getString(io.github.guowenlong.chatgptforandroid.common.R.string.select_file)
         }
         binding.ivSetting.setOnClickListener {
             startActivity(Intent(this@TranslationActivity, TranslationSettingActivity::class.java))

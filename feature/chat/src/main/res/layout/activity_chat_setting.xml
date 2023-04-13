@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_content"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/length_50"
             android:background="@color/card_background"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -23,7 +23,7 @@
                 android:id="@+id/tv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:padding="@dimen/length_16"
                 android:src="@android:drawable/arrow_down_float"
                 android:text="@string/back"
                 android:textColor="@android:color/white"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/settings"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/font_20"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,14 +54,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="16dp">
+                android:paddingTop="@dimen/length_16">
 
                 <TextView
                     android:id="@+id/tv_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="Temperature ( 0.0 ~ 2.0 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/temperature_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
                     android:id="@+id/tv_current_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="1.0"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_temperature"
@@ -80,7 +80,7 @@
                     android:id="@+id/sb_temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="20"
                     android:progress="10"
                     app:layout_constraintTop_toBottomOf="@id/tv_temperature" />
@@ -89,8 +89,8 @@
                     android:id="@+id/tv_top_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="top_p ( 0.0 ~ 1.0 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/top_p_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_temperature" />
@@ -99,7 +99,7 @@
                     android:id="@+id/tv_current_top_p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="1.0"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_top_p"
@@ -109,7 +109,7 @@
                     android:id="@+id/sb_top_p"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="10"
                     android:progress="10"
                     app:layout_constraintTop_toBottomOf="@id/tv_top_p" />
@@ -118,8 +118,8 @@
                     android:id="@+id/tv_max_token"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="max token ( 0 ~ 2048 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/max_token_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_top_p" />
@@ -128,7 +128,7 @@
                     android:id="@+id/tv_current_max_token"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="2048"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_max_token"
@@ -138,7 +138,7 @@
                     android:id="@+id/sb_max_token"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="2048"
                     android:progress="2048"
                     app:layout_constraintTop_toBottomOf="@id/tv_max_token" />
@@ -147,8 +147,8 @@
                     android:id="@+id/tv_presence_penalty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="presence penalty ( -2 ~ 2 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/presence_penalty_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_max_token" />
@@ -157,7 +157,7 @@
                     android:id="@+id/tv_current_presence_penalty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="20"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_presence_penalty"
@@ -167,7 +167,7 @@
                     android:id="@+id/sb_presence_penalty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="40"
                     android:progress="20"
                     app:layout_constraintTop_toBottomOf="@id/tv_presence_penalty" />
@@ -176,8 +176,8 @@
                     android:id="@+id/tv_frequency_penalty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="frequency penalty ( -2 ~ 2 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/frequency_penalty_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_presence_penalty" />
@@ -186,7 +186,7 @@
                     android:id="@+id/tv_current_frequency_penalty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="20"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_frequency_penalty"
@@ -196,7 +196,7 @@
                     android:id="@+id/sb_frequency_penalty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="40"
                     android:progress="20"
                     app:layout_constraintTop_toBottomOf="@id/tv_frequency_penalty" />
@@ -205,8 +205,8 @@
                     android:id="@+id/tv_context"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="context ( 0 ~ 20 ) 当前值:"
+                    android:layout_margin="@dimen/length_16"
+                    android:text="@string/context_count_current"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_frequency_penalty" />
@@ -215,7 +215,7 @@
                     android:id="@+id/tv_current_context"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:text="3"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toRightOf="@id/tv_context"
@@ -225,7 +225,7 @@
                     android:id="@+id/sb_context"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/length_16"
                     android:max="20"
                     android:progress="3"
                     app:layout_constraintTop_toBottomOf="@id/tv_context" />

@@ -23,7 +23,7 @@ data class Model(
         @field:Json(name = "object")
         val `object`: String,
         @field:Json(name = "owned_by")
-        val owned_by: String,
+        val ownedBy: String,
         @field:Json(name = "permission")
         val permission: List<Permission>,
         @field:Json(name = "root")
@@ -32,17 +32,17 @@ data class Model(
         @JsonClass(generateAdapter = true)
         data class Permission(
             @field:Json(name = "allow_create_engine")
-            val allow_create_engine: Boolean,
+            val allowCreateEngine: Boolean,
             @field:Json(name = "allow_fine_tuning")
-            val allow_fine_tuning: Boolean,
+            val allowFineTuning: Boolean,
             @field:Json(name = "allow_logprobs")
-            val allow_logprobs: Boolean,
+            val allowLogprobs: Boolean,
             @field:Json(name = "allow_sampling")
-            val allow_sampling: Boolean,
+            val allowSampling: Boolean,
             @field:Json(name = "allow_search_indices")
-            val allow_search_indices: Boolean,
+            val allowSearchIndices: Boolean,
             @field:Json(name = "allow_view")
-            val allow_view: Boolean,
+            val allowView: Boolean,
             @field:Json(name = "created")
             val created: Int,
             @field:Json(name = "group")
@@ -50,7 +50,7 @@ data class Model(
             @field:Json(name = "id")
             val id: String,
             @field:Json(name = "is_blocking")
-            val is_blocking: Boolean,
+            val isBlocking: Boolean,
             @field:Json(name = "object")
             val `object`: String,
             @field:Json(name = "organization")

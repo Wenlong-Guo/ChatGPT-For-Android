@@ -27,7 +27,7 @@ data class Completion(
     @JsonClass(generateAdapter = true)
     data class Choice(
         @field:Json(name = "finish_reason")
-        val finish_reason: String,
+        val finishReason: String,
         @field:Json(name = "index")
         val index: Int,
         @field:Json(name = "logprobs")
@@ -40,8 +40,8 @@ data class Completion(
         @field:Json(name = "completion_tokens")
         val completion_tokens: Int,
         @field:Json(name = "prompt_tokens")
-        val prompt_tokens: Int,
+        val promptTokens: Int,
         @field:Json(name = "total_tokens")
-        val total_tokens: Int
+        val totalTokens: Int
     )
 }

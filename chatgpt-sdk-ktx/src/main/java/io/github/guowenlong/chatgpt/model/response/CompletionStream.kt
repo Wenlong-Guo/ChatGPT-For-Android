@@ -27,7 +27,7 @@ data class CompletionStream(
     @JsonClass(generateAdapter = true)
     data class Choice(
         @field:Json(name = "finish_reason")
-        val finish_reason: String? = null,
+        val finishReason: String? = null,
         @field:Json(name = "index")
         val index: Int,
         @field:Json(name = "delta")

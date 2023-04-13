@@ -18,7 +18,7 @@ data class CompletionRequest(
     @field:Json(name = "temperature")
     var temperature: Double? = null,
     @field:Json(name = "top_p")
-    var top_p: Double? = null,
+    var topP: Double? = null,
     @field:Json(name = "n")
     val n: Int? = null,
     @field:Json(name = "stream")
@@ -26,13 +26,13 @@ data class CompletionRequest(
     @field:Json(name = "stop")
     var stop: String? = null,
     @field:Json(name = "max_tokens")
-    var max_tokens: Int? = null,
+    var maxTokens: Int? = null,
     @field:Json(name = "presence_penalty")
-    var presence_penalty: Double? = null,
+    var presencePenalty: Double? = null,
     @field:Json(name = "frequency_penalty")
-    var frequency_penalty: Double? = null,
+    var frequencyPenalty: Double? = null,
     @field:Json(name = "logit_bias")
-    var logit_bias: Any? = null,
+    var logitBias: Any? = null,
     @field:Json(name = "user")
     var user: String? = null,
 ) {

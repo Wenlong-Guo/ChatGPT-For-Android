@@ -1,9 +1,9 @@
 package io.github.guowenlong.chatgptforandroid
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import com.jaeger.library.StatusBarUtil
@@ -15,9 +15,13 @@ import io.github.guowenlong.chatgptforandroid.common.components.SpProperty
 import io.github.guowenlong.chatgptforandroid.databinding.ActivityMainBinding
 import io.github.guowenlong.chatgptforandroid.setting.SettingsActivity
 import org.koin.java.KoinJavaComponent
-import java.io.File
-import java.io.FileOutputStream
 
+/**
+ * Description: 首页
+ * Author:      郭文龙
+ * Date:        2023/3/31 2:38
+ * Email:       guowenlong20000@sina.com
+ */
 class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     BaseActivity<ActivityMainBinding>() {
 
@@ -26,7 +30,10 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.setColor(
             this@MainActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.card_background)
+            ContextCompat.getColor(
+                this@MainActivity,
+                io.github.guowenlong.chatgptforandroid.common.R.color.card_background
+            )
         )
 
         binding.cvChat.setOnClickListener {
@@ -68,7 +75,7 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
 
     private fun checkApiKeyNull(): Boolean {
         return if (sp.openAPIKey.isBlank()) {
-            Toast.makeText(this@MainActivity, "请先设置API Key", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, getString(io.github.guowenlong.chatgptforandroid.common.R.string.please_input_api_key), Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             true
         } else {
@@ -77,43 +84,6 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     }
 
     override fun bind() {
-//        binding.button.setOnClickListener {
-//            copyAssetFileToCache(this@ChatActivity, "ic_edit_image.png")
-//            viewModel.variationImage(File(cacheDir.absolutePath, "ic_edit_image.png"))
-//            viewModel.embeddings()
-//
-//            copyAssetFileToCache(this@ChatActivity, "shinian.mp3")
-//            viewModel.translation(File(cacheDir.absolutePath, "shinian.mp3"))
-//
-//            return@setOnClickListener
-//        }
-//        binding.btnSend.setOnClickListener {
-//            viewModel.completionStream(
-//                CompletionRequest(
-//                    messages = listOf(
-//                        CompletionRequest.Message(
-//                            content = binding.etContent.text.toString()
-//                        )
-//                    )
-//                )
-//            )
-//            binding.etContent.setText("")
-//        }
-    }
 
-    private fun copyAssetFileToCache(context: Context, fileName: String) {
-        val assetManager = context.assets
-        val inputStream = assetManager.open(fileName)
-        val cacheDir = context.cacheDir
-        val outputFile = File(cacheDir, fileName)
-        val outputStream = FileOutputStream(outputFile)
-        val buffer = ByteArray(1024)
-        var length = inputStream.read(buffer)
-        while (length > 0) {
-            outputStream.write(buffer, 0, length)
-            length = inputStream.read(buffer)
-        }
-        inputStream.close()
-        outputStream.close()
     }
 }

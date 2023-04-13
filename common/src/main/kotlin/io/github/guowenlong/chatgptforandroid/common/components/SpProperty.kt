@@ -16,7 +16,7 @@ class SpProperty : BaseSharedPreferences() {
     var proxyHost by Delegates.string()
     var proxyPort by Delegates.int(7890)
 
-    var chatTemperature by Delegates.float(1.0F)
+    var chatTemperature by Delegates.float(0.0F)
     var chatTopP by Delegates.float(1.0F)
     var chatMaxToken by Delegates.int(2048)
     var chatPresencePenalty by Delegates.float(0.0F)

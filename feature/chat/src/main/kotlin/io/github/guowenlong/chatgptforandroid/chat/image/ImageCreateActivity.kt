@@ -63,7 +63,7 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
         viewModel.statusLiveData.observe(this) {
             when (it) {
                 is Status.Loading -> {
-                    binding.tvDesc.text = "正在生成..."
+                    binding.tvDesc.text = getString(io.github.guowenlong.chatgptforandroid.common.R.string.generating)
                 }
                 is Status.Completed -> {
                     binding.tvDesc.text = ""

@@ -76,12 +76,12 @@ class ChatGPTViewModel(private val repository: ChatGPTRepository) : BaseViewMode
 
     private fun completionStream(completionRequest: CompletionRequest) = launch {
         completionRequest.temperature = sp.chatTemperature.toDouble()
-        completionRequest.top_p = sp.chatTopP.toDouble()
+        completionRequest.topP = sp.chatTopP.toDouble()
         if (sp.chatMaxToken != 2048) {
-            completionRequest.max_tokens = sp.chatMaxToken
+            completionRequest.maxTokens = sp.chatMaxToken
         }
-        completionRequest.presence_penalty = sp.chatPresencePenalty.toDouble()
-        completionRequest.frequency_penalty = sp.chatFrequencyPenalty.toDouble()
+        completionRequest.presencePenalty = sp.chatPresencePenalty.toDouble()
+        completionRequest.frequencyPenalty = sp.chatFrequencyPenalty.toDouble()
         repository.getCompletionsByString(
             completionRequest, object : StreamListener {
                 override fun onStart() {

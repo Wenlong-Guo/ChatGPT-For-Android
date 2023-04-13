@@ -6,7 +6,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
- * Description:
+ * Description: 聊天的依赖注入module
  * Author:      郭文龙
  * Date:        2023/4/7 21:04
  * Email:       guowenlong20000@sina.com

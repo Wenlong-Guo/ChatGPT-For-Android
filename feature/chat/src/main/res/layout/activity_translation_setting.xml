@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_content"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/length_50"
             android:background="@color/card_background"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -21,7 +21,7 @@
                 android:id="@+id/tv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:padding="@dimen/length_16"
                 android:src="@android:drawable/arrow_down_float"
                 android:text="@string/back"
                 android:textColor="@android:color/white"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/translation_setting"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/font_20"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +43,9 @@
 
             <ImageView
                 android:id="@+id/iv_setting"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="10dp"
+                android:layout_width="@dimen/length_50"
+                android:layout_height="@dimen/length_50"
+                android:padding="@dimen/length_10"
                 android:src="@mipmap/ic_settings_512"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -56,8 +56,8 @@
             android:id="@+id/tv_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="提示词"
+            android:layout_margin="@dimen/length_16"
+            android:text="@string/prompt"
             android:textColor="@android:color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_content" />
@@ -66,15 +66,15 @@
             android:id="@+id/et_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="@dimen/length_12"
             android:background="#646668"
             android:gravity="top|start"
-            android:hint="请输入提示词~"
+            android:hint="@string/hint_please_input_prompt"
             android:maxLines="7"
-            android:padding="8dp"
+            android:padding="@dimen/length_8"
             android:textColor="@android:color/white"
             android:textColorHint="#C3C5C7"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_prompt" />
@@ -83,8 +83,8 @@
             android:id="@+id/tv_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="temperature ( 0.0 ~ 1.0 ) 当前值:"
+            android:layout_margin="@dimen/length_16"
+            android:text="@string/translation_temperature_current"
             android:textColor="@android:color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_content" />
@@ -93,8 +93,7 @@
             android:id="@+id/tv_current_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="1.0"
+            android:layout_margin="@dimen/length_16"
             android:textColor="@android:color/white"
             app:layout_constraintLeft_toRightOf="@id/tv_temperature"
             app:layout_constraintTop_toBottomOf="@id/et_content" />
@@ -103,17 +102,17 @@
             android:id="@+id/sb_temperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/length_16"
             android:max="10"
-            android:progress="10"
+            android:progress="0"
             app:layout_constraintTop_toBottomOf="@id/tv_temperature" />
 
         <TextView
             android:id="@+id/tv_max_token"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="语言"
+            android:layout_margin="@dimen/length_16"
+            android:text="@string/language"
             android:textColor="@android:color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sb_temperature" />
@@ -122,15 +121,15 @@
             android:id="@+id/et_language"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_margin="@dimen/length_12"
             android:background="#646668"
             android:gravity="top|start"
-            android:hint="请输入 ISO-639-1 语言代码~"
+            android:hint="@string/hint_please_input_iso_639_1"
             android:maxLines="7"
-            android:padding="8dp"
+            android:padding="@dimen/length_8"
             android:textColor="@android:color/white"
             android:textColorHint="#C3C5C7"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_max_token" />

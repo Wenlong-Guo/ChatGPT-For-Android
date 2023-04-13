@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Environment
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -14,7 +13,7 @@ import java.io.IOException
 
 
 /**
- * Description:
+ * Description: 下载工具类
  * Author:      郭文龙
  * Date:        2023/4/10 22:49
  * Email:       guowenlong20000@sina.com

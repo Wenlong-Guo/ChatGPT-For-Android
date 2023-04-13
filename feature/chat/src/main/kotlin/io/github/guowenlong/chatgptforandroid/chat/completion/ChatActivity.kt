@@ -65,7 +65,7 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
         viewModel.statusLiveData.observe(this) {
             when (it) {
                 is Status.Loading -> {
-                    binding.tvDesc.text = "正在输入..."
+                    binding.tvDesc.text = getString(io.github.guowenlong.chatgptforandroid.common.R.string.inputting)
                 }
                 is Status.Completed -> {
                     binding.tvDesc.text = ""
@@ -101,10 +101,10 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
                         )
                     ),
                     temperature = sp.chatTemperature.toDouble(),
-                    top_p = sp.chatTopP.toDouble(),
-                    max_tokens =  sp.chatMaxToken,
-                    presence_penalty = sp.chatPresencePenalty.toDouble(),
-                    frequency_penalty = sp.chatFrequencyPenalty.toDouble(),
+                    topP = sp.chatTopP.toDouble(),
+                    maxTokens =  sp.chatMaxToken,
+                    presencePenalty = sp.chatPresencePenalty.toDouble(),
+                    frequencyPenalty = sp.chatFrequencyPenalty.toDouble(),
                 ),
                 count = sp.chatContextCount
             )

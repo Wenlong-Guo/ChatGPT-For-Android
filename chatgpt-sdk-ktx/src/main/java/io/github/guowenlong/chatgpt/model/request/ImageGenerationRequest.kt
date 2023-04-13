@@ -20,7 +20,7 @@ data class ImageGenerationRequest(
     @Json(name = "size")
     val size: String? = null,
     @Json(name = "response_format")
-    val response_format: String? = null,
+    val responseFormat: String? = null,
     @Json(name = "user")
     val user: String? = null
 )

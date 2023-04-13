@@ -20,5 +20,30 @@
     <string name="create_image">生成图片</string>
     <string name="translation">翻译</string>
     <string name="translation_setting">翻译设置页</string>
-
+    <string name="please_input_api_key">请输入api key</string>
+    <string name="create_image_based_on_prompt">Create image based on prompt</string>
+    <string name="chat_with_chatgpt">Chat with ChatGPT.</string>
+    <string name="convert_audio_to_text">Convert audio to text.</string>
+    <string name="other_features_are_still_in_development_stay_tuned_for_updates">Other features are still in development, stay tuned for updates.</string>
+    <string name="inputting">正在输入…</string>
+    <string name="generating">正在生成…</string>
+    <string name="translating">正在翻译…</string>
+    <string name="select_file">选择文件</string>
+    <string name="please_select_a_file">请选择文件</string>
+    <string name="the_picture_is_saved_to">图片保存到%s</string>
+    <string name="download_failed">下载失败</string>
+    <string name="chat">聊天</string>
+    <string name="send">发送</string>
+    <string name="hint_please_input_prompt">请输入提示词~</string>
+    <string name="temperature_current">Temperature ( 0.0 ~ 2.0 ) 当前值:</string>
+    <string name="translation_temperature_current">Temperature ( 0.0 ~ 1.0 ) 当前值:</string>
+    <string name="top_p_current">top_p ( 0.0 ~ 1.0 ) 当前值:</string>
+    <string name="max_token_current">max token ( 0 ~ 2048 ) 当前值:</string>
+    <string name="presence_penalty_current">presence penalty ( -2 ~ 2 ) 当前值:</string>
+    <string name="frequency_penalty_current">frequency penalty ( -2 ~ 2 ) 当前值:</string>
+    <string name="context_count_current">保留上下文对话条数 ( 0 ~ 20 ) 当前值:</string>
+    <string name="create_count_current">生成个数 (1 ~ 10) 当前值:</string>
+    <string name="prompt">提示词</string>
+    <string name="language">语言</string>
+    <string name="hint_please_input_iso_639_1">请输入 ISO-639-1 语言代码~</string>
 </resources>

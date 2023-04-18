@@ -9,7 +9,7 @@
 一个基于OpenAi接口的安卓应用
 
 # 下载安装包
-[点击下载](/APK/app-release.apk)
+[点击下载](https://github.com/Wenlong-Guo/ChatGPT-For-Android/releases)
 
 # 设置 API Key
 <img src="https://raw.githubusercontent.com/Wenlong-Guo/open-assets/main/img/blog/setting.jpg" width=500/>

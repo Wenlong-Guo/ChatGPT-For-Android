@@ -14,7 +14,23 @@ An Android Application Based on OpenAI API
 # Setup API Key
 <img src="https://raw.githubusercontent.com/Wenlong-Guo/open-assets/main/img/blog/setting.jpg" width=500/>
 
-# Feature
+# Features
+
+1. Chatting
+    1. Model: `ChatGPT-3.5`
+    2. Streaming conversation
+    3. Support context
+    4. Support modifying `temperature`, `top_p`, `max_token`, `presence_penalty`, `frequency_penalty` parameters
+2. Image generation
+    1. Support modifying parameters of `n` and `size`.
+3. Audio to text transcription
+    1. Model: `whisper-1`
+    2. Support modifying `prompt` and `temperature`.
+4. Proxy support
+    1. Support `http`, `socks` and `direct` proxy modes.
+    2. Support custom host address.
+   
+# ScreenShot
 1. Chat with GPT-3.5
 
 <img src="https://raw.githubusercontent.com/Wenlong-Guo/open-assets/main/img/blog/chat.gif" width=500/>

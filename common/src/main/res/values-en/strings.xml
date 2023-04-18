@@ -46,4 +46,5 @@
     <string name="prompt">Prompt</string>
     <string name="language">Language</string>
     <string name="hint_please_input_iso_639_1">please input ISO–639–1 language code</string>
+    <string name="resolution">Resolution</string>
 </resources>

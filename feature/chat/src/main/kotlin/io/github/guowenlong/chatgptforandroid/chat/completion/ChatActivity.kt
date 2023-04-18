@@ -3,6 +3,7 @@ package io.github.guowenlong.chatgptforandroid.chat.completion
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.jaeger.library.StatusBarUtil
@@ -39,7 +40,10 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.setColor(
             this@ChatActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.status_bar)
+            ContextCompat.getColor(
+                this@ChatActivity,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
         )
         val layoutManager = (binding.rvContent.layoutManager as LinearLayoutManager)
         binding.rvContent.itemAnimator = null
@@ -65,7 +69,8 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
         viewModel.statusLiveData.observe(this) {
             when (it) {
                 is Status.Loading -> {
-                    binding.tvDesc.text = getString(io.github.guowenlong.chatgptforandroid.common.R.string.inputting)
+                    binding.tvDesc.text =
+                        getString(io.github.guowenlong.chatgptforandroid.common.R.string.inputting)
                 }
                 is Status.Completed -> {
                     binding.tvDesc.text = ""
@@ -102,7 +107,7 @@ class ChatActivity(override val layoutId: Int = R.layout.activity_chat) :
                     ),
                     temperature = sp.chatTemperature.toDouble(),
                     topP = sp.chatTopP.toDouble(),
-                    maxTokens =  sp.chatMaxToken,
+                    maxTokens = sp.chatMaxToken,
                     presencePenalty = sp.chatPresencePenalty.toDouble(),
                     frequencyPenalty = sp.chatFrequencyPenalty.toDouble(),
                 ),

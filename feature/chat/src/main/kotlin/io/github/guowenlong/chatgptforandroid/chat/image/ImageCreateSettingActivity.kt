@@ -1,6 +1,8 @@
 package io.github.guowenlong.chatgptforandroid.chat.image
 
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.R
 import io.github.guowenlong.chatgptforandroid.chat.databinding.ActivityImageCreateSettingBinding
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
@@ -19,6 +21,13 @@ class ImageCreateSettingActivity(override val layoutId: Int = R.layout.activity_
     val sp: SpProperty by KoinJavaComponent.inject(SpProperty::class.java)
 
     override fun init(savedInstanceState: Bundle?) {
+        StatusBarUtil.setColor(
+            this,
+            ContextCompat.getColor(
+                this,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
+        )
         binding.apply {
             tvCurrentN.text = sp.imageCreateN.toString()
             sbN.progress = sp.imageCreateN

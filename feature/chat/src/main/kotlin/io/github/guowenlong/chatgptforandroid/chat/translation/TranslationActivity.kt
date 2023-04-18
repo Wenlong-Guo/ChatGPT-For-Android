@@ -3,6 +3,7 @@ package io.github.guowenlong.chatgptforandroid.chat.translation
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.jaeger.library.StatusBarUtil
@@ -44,10 +45,12 @@ class TranslationActivity(override val layoutId: Int = R.layout.activity_transla
     private var filePath: String? = null
 
     override fun init(savedInstanceState: Bundle?) {
-
         StatusBarUtil.setColor(
-            this@TranslationActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.status_bar)
+            this,
+            ContextCompat.getColor(
+                this,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
         )
         val layoutManager = binding.rvContent.layoutManager as LinearLayoutManager
 
@@ -109,7 +112,7 @@ class TranslationActivity(override val layoutId: Int = R.layout.activity_transla
                     "wav",
                     "webm",
                 ) //设置文件类型
-                .setSortType(FileSelector.BY_TIME_ASC) //设置时间排序
+                .setSortType(FileSelector.BY_NAME_DESC) //设置时间排序
                 .requestCode(1) //设置返回码
                 .setTargetPath("/storage/emulated/0/") //设置默认目录
                 .start()

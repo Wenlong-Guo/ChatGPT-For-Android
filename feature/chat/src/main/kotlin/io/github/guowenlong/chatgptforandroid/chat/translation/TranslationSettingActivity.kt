@@ -2,6 +2,8 @@ package io.github.guowenlong.chatgptforandroid.chat.translation
 
 import android.os.Bundle
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
+import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.R
 import io.github.guowenlong.chatgptforandroid.chat.databinding.ActivityTranslationSettingBinding
 import io.github.guowenlong.chatgptforandroid.common.base.BaseActivity
@@ -21,9 +23,18 @@ class TranslationSettingActivity(override val layoutId: Int = R.layout.activity_
 
     override fun init(savedInstanceState: Bundle?) {
         binding.sbTemperature.progress = (sp.chatTemperature * 10).toInt()
+        binding.etContent.setText(sp.translationPrompt)
+        binding.etLanguage.setText(sp.translationLanguage)
     }
 
     override fun bind() {
+        StatusBarUtil.setColor(
+            this,
+            ContextCompat.getColor(
+                this,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
+        )
         binding.tvBack.setOnClickListener {
             finish()
         }

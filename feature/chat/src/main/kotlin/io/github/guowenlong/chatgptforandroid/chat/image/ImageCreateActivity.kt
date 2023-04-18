@@ -3,6 +3,7 @@ package io.github.guowenlong.chatgptforandroid.chat.image
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drakeet.multitype.MultiTypeAdapter
 import com.jaeger.library.StatusBarUtil
@@ -38,8 +39,11 @@ class ImageCreateActivity(override val layoutId: Int = R.layout.activity_image_c
 
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.setColor(
-            this@ImageCreateActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.status_bar)
+            this,
+            ContextCompat.getColor(
+                this,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
         )
         val layoutManager = binding.rvContent.layoutManager as LinearLayoutManager
 

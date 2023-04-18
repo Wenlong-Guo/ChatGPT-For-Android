@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/length_16"
-                    android:text="�ֱ���"
+                    android:text="@string/resolution"
                     android:textColor="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sb_n" />

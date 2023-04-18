@@ -2,6 +2,7 @@ package io.github.guowenlong.chatgptforandroid.chat.completion
 
 import android.os.Bundle
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.chatgptforandroid.chat.R
 import io.github.guowenlong.chatgptforandroid.chat.databinding.ActivityChatSettingBinding
@@ -23,7 +24,10 @@ class ChatSettingActivity(override val layoutId: Int = R.layout.activity_chat_se
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.setColor(
             this@ChatSettingActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.status_bar)
+            ContextCompat.getColor(
+                this@ChatSettingActivity,
+                io.github.guowenlong.chatgptforandroid.common.R.color.status_bar
+            )
         )
         binding.apply {
             sbTemperature.progress = (sp.chatTemperature * 10).toInt()

@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.7.20"
-androidGradlePlugin = "7.3.1"
 
+androidGradlePlugin = "7.4.2"
 
 androidxActivityKtx = "1.7.0"
 
@@ -48,6 +48,7 @@ firebaseBom = "31.2.3"
 leakcanary = "2.10"
 
 [libraries]
+
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivityKtx" }
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
@@ -82,7 +83,7 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
 okhttp-log = { group = "com.github.ihsanbal", name = "LoggingInterceptor", version.ref = "okhttpLog" }
-okhttp-see = {group = "com.squareup.okhttp3", name = "okhttp-sse", version = "4.10.0" }
+okhttp-see = { group = "com.squareup.okhttp3", name = "okhttp-sse", version = "4.10.0" }
 
 retrofit = { group = 'com.squareup.retrofit2', name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }

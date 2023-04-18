@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    api(kotlin("stdlib-jdk8:1.7.2"))
     api(libs.androidx.activity.ktx)
     api(libs.androidx.appcompat)
     api(libs.androidx.cardview)

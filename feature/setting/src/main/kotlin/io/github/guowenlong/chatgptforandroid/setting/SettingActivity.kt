@@ -1,6 +1,7 @@
 package io.github.guowenlong.chatgptforandroid.setting
 
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.jaeger.library.StatusBarUtil
 import io.github.guowenlong.SingleChatGPT
 import io.github.guowenlong.chatgpt.ChatGPT
@@ -24,7 +25,10 @@ class SettingsActivity(override val layoutId: Int = R.layout.activity_settings) 
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.setColor(
             this@SettingsActivity,
-            resources.getColor(io.github.guowenlong.chatgptforandroid.common.R.color.card_background)
+            ContextCompat.getColor(
+                this@SettingsActivity,
+                io.github.guowenlong.chatgptforandroid.common.R.color.card_background
+            )
         )
         when (sp.proxyType) {
             0 -> binding.rbNull.isChecked = true

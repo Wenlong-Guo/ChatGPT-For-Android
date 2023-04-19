@@ -9,7 +9,8 @@
 An Android Application Based on OpenAI API
 
 # Download APK
-[Click here to download](https://github.com/Wenlong-Guo/ChatGPT-For-Android/releases)
+1. [Click here to download](https://github.com/Wenlong-Guo/ChatGPT-For-Android/releases)
+2. https://wwvo.lanzouo.com/ibyvE0tg7lji password:6qap
 
 # Setup API Key
 <img src="https://raw.githubusercontent.com/Wenlong-Guo/open-assets/main/img/blog/setting.jpg" width=500/>

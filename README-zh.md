@@ -9,7 +9,8 @@
 一个基于OpenAi接口的安卓应用
 
 # 下载安装包
-[点击下载](https://github.com/Wenlong-Guo/ChatGPT-For-Android/releases)
+1. [点击下载](https://github.com/Wenlong-Guo/ChatGPT-For-Android/releases)
+2. https://wwvo.lanzouo.com/ibyvE0tg7lji password:6qap
 
 本人在北京 待业在家好几个月了
 

@@ -62,6 +62,7 @@
             android:layout_margin="@dimen/length_16"
             android:background="@color/card_background"
             android:hint="@string/hint_api_key"
+            android:inputType="textPassword"
             android:padding="@dimen/length_8"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/darker_gray"
